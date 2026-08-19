@@ -3,6 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ main ]
+    workflow_dispatch: # 👈 加上这行，GitHub 网页上就会出现手动运行按钮！
 
 permissions:
   contents: read
