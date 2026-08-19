@@ -1,17 +1,601 @@
 ---
+// src/pages/index.astro
+import { getCollection } from 'astro:content';
+import { siteDataEn, siteDataZh } from '../data/siteData';
+import '../styles/global.css';
 
+// 导入本地图片
+import workshop1 from '../assets/images/workshop-1.jpg';
+import workshop2 from '../assets/images/workshop-2.jpg';
+import workshop3 from '../assets/images/workshop-3.jpg';
+import workshop4 from '../assets/images/workshop-4.jpg';
+import logoImg from '../assets/images/logo.png';
+import hero1 from '../assets/images/hero-bg1.jpg';
+import hero2 from '../assets/images/hero-bg2.png';
+import hero3 from '../assets/images/hero-bg3.png';
+
+// 读取 Markdown 轮播集合，分别提取英文和中文 Slide
+const rawSlides = await getCollection('hero');
+const slidesEn = rawSlides
+  .filter(item => item.data.lang === 'en')
+  .sort((a, b) => a.data.order - b.data.order);
+
+const slidesZh = rawSlides
+  .filter(item => item.data.lang === 'zh')
+  .sort((a, b) => a.data.order - b.data.order);
+
+const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithium Solution Specialist`;
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{pageTitle}</title>
+  </head>
+  <body class="lang-en">
+    <!-- 顶部导航栏 -->
+    <header class="top-nav">
+      <div class="nav-container">
+        <div class="logo">
+          <img src={logoImg.src} alt={`${siteDataEn.siteName} ${siteDataEn.siteSubTitle}`} class="logo-img" />
+          <div class="logo-text">
+            <span class="logo-title">
+              <span class="lang-en">{siteDataEn.siteName}</span>
+              <span class="lang-zh">{siteDataZh.siteName}</span>
+            </span>
+            <span class="logo-sub">{siteDataEn.siteSubTitle}</span>
+          </div>
+        </div>
+
+        <nav class="nav-links">
+          {siteDataEn.nav.links.map((link, idx) => (
+            <a href={link.href} class="nav-link">
+              <span class="lang-en">{link.name}</span>
+              <span class="lang-zh">{siteDataZh.nav.links[idx].name}</span>
+            </a>
+          ))}
+        </nav>
+
+        <div class="nav-actions">
+          <button class="lang-btn" id="lang-toggle-btn">
+            <span class="lang-icon">🌐</span>
+            <span class="lang-text">中文</span>
+          </button>
+          <button class="btn-quote trigger-quote-modal">
+            <span class="lang-en">{siteDataEn.nav.quoteBtnText}</span>
+            <span class="lang-zh">{siteDataZh.nav.quoteBtnText}</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- 右侧悬浮小点导航 -->
+    <aside class="dot-nav">
+      {siteDataEn.nav.links.map((link, idx) => (
+        <a href={link.href} class={`dot-item ${idx === 0 ? 'active' : ''}`} data-section={link.href.replace('#', '')}>
+          <span class="tooltip">
+            <span class="lang-en">{link.name}</span>
+            <span class="lang-zh">{siteDataZh.nav.links[idx].name}</span>
+          </span>
+          <span class="dot"></span>
+        </a>
+      ))}
+    </aside>
+
+    <main class="content">
+      <!-- Section 1: Hero 全屏轮播区域 (修复白屏 Bug：固定 3 个 Slide 容器，内部嵌入中英双语) -->
+      <section id="hero" class="section hero-section">
+        <div class="slider-container">
+          {slidesEn.map((slideEn, index) => {
+            const slideZh = slidesZh[index] || slideEn; // 匹配同序号中文文案
+            return (
+              <div 
+                class={`slide ${index === 0 ? 'active' : ''}`} 
+                data-index={index}
+              >
+                <!-- 共享背景图与蒙版 -->
+                <div 
+                  class="slide-bg" 
+                  style={`background-image: url('${slideEn.data.bgImage.src}');`}
+                ></div>
+                <div class="hero-mask"></div>
+
+                <!-- 1. 英文文案 -->
+                <div class="hero-content lang-en">
+                  <span class={`pill-badge badge-${slideEn.data.badgeColor || 'emerald'}`}>
+                    {slideEn.data.badge}
+                  </span>
+                  <h1>{slideEn.data.title}<br/><span>{slideEn.data.subtitle}</span></h1>
+                  <p class="subtitle">{slideEn.data.description}</p>
+                  <div class="hero-btns">
+                    <a href={slideEn.data.ctaLink1} class="btn btn-green">{slideEn.data.ctaText1}</a>
+                    <button class="btn btn-translucent trigger-quote-modal">{slideEn.data.ctaText2}</button>
+                  </div>
+                </div>
+
+                <!-- 2. 中文文案 -->
+                <div class="hero-content lang-zh">
+                  <span class={`pill-badge badge-${slideZh.data.badgeColor || 'emerald'}`}>
+                    {slideZh.data.badge}
+                  </span>
+                  <h1>{slideZh.data.title}<br/><span>{slideZh.data.subtitle}</span></h1>
+                  <p class="subtitle">{slideZh.data.description}</p>
+                  <div class="hero-btns">
+                    <a href={slideZh.data.ctaLink1} class="btn btn-green">{slideZh.data.ctaText1}</a>
+                    <button class="btn btn-translucent trigger-quote-modal">{slideZh.data.ctaText2}</button>
+                  </div>
+                </div>
+
+                <!-- 右下角缩略图 -->
+                <div class="hero-thumbnails">
+                  {slideEn.data.gallery.map((imgItem) => (
+                    <div class="thumb-card" data-full={imgItem.src}>
+                      <img src={imgItem.src} alt="展示产品图" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <button class="slider-arrow arrow-left" id="prev-slide">‹</button>
+        <button class="slider-arrow arrow-right" id="next-slide">›</button>
+
+        <div class="slider-dots">
+          {slidesEn.map((_, index) => (
+            <span class={`slider-dot ${index === 0 ? 'active' : ''}`} data-index={index}></span>
+          ))}
+        </div>
+      </section>
+
+      <!-- Section 2: 公司简介 -->
+      <section id="about" class="section about-section">
+        <div class="section-inner">
+          <span class="pill-badge-center">
+            <span class="lang-en">{siteDataEn.about.badge}</span>
+            <span class="lang-zh">{siteDataZh.about.badge}</span>
+          </span>
+          <h2>
+            <span class="lang-en">{siteDataEn.about.title}</span>
+            <span class="lang-zh">{siteDataZh.about.title}</span>
+          </h2>
+          <p class="section-desc">
+            <span class="lang-en">{siteDataEn.about.subTitle}</span>
+            <span class="lang-zh">{siteDataZh.about.subTitle}</span>
+          </p>
+
+          <div class="grid-2 about-main-grid">
+            <div class="text-block">
+              <h3>
+                <span class="lang-en">{siteDataEn.about.mainTitle}</span>
+                <span class="lang-zh">{siteDataZh.about.mainTitle}</span>
+              </h3>
+              <div class="lang-en">
+                {siteDataEn.about.paragraphs.map(p => <p>{p}</p>)}
+              </div>
+              <div class="lang-zh">
+                {siteDataZh.about.paragraphs.map(p => <p>{p}</p>)}
+              </div>
+            </div>
+            <div class="stats-grid">
+              {siteDataEn.about.stats.map((stat, idx) => (
+                <div class="stat-card">
+                  <span class="stat-num">{stat.num}</span>
+                  <span class="stat-label">
+                    <span class="lang-en">{stat.label}</span>
+                    <span class="lang-zh">{siteDataZh.about.stats[idx].label}</span>
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- 硬件实力展示 -->
+          <div class="factory-showcase">
+            <h3 class="showcase-title">
+              <span class="lang-en">{siteDataEn.about.showcaseTitle}</span>
+              <span class="lang-zh">{siteDataZh.about.showcaseTitle}</span>
+            </h3>
+            <div class="factory-grid">
+              <div class="factory-card thumb-card" data-full={workshop1.src}>
+                <img src={workshop1.src} alt="研发基地" />
+                <div class="factory-info">
+                  <span class="factory-tag">
+                    <span class="lang-en">R&D Base</span>
+                    <span class="lang-zh">研发基地</span>
+                  </span>
+                  <h4>
+                    <span class="lang-en">Modern R&D Park</span>
+                    <span class="lang-zh">现代化智造园区</span>
+                  </h4>
+                </div>
+              </div>
+
+              <div class="factory-card thumb-card" data-full={workshop2.src}>
+                <img src={workshop2.src} alt="无尘车间" />
+                <div class="factory-info">
+                  <span class="factory-tag">
+                    <span class="lang-en">Cleanroom</span>
+                    <span class="lang-zh">无尘车间</span>
+                  </span>
+                  <h4>
+                    <span class="lang-en">Automated Workshop</span>
+                    <span class="lang-zh">全自动化生产车间</span>
+                  </h4>
+                </div>
+              </div>
+
+              <div class="factory-card thumb-card" data-full={workshop3.src}>
+                <img src={workshop3.src} alt="精密装备" />
+                <div class="factory-info">
+                  <span class="factory-tag">
+                    <span class="lang-en">Equipment</span>
+                    <span class="lang-zh">精密装备</span>
+                  </span>
+                  <h4>
+                    <span class="lang-en">Precision Testing Setup</span>
+                    <span class="lang-zh">高精度检测加工设备</span>
+                  </h4>
+                </div>
+              </div>
+
+              <div class="factory-card thumb-card" data-full={workshop4.src}>
+                <img src={workshop4.src} alt="智能库房" />
+                <div class="factory-info">
+                  <span class="factory-tag">
+                    <span class="lang-en">Warehouse</span>
+                    <span class="lang-zh">智能库房</span>
+                  </span>
+                  <h4>
+                    <span class="lang-en">Smart Logistics Center</span>
+                    <span class="lang-zh">恒温成品与仓储中心</span>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: 船舶锂电 -->
+      <section id="products" class="section bg-light">
+        <div class="section-inner">
+          <span class="pill-badge-center">
+            <span class="lang-en">{siteDataEn.products.badge}</span>
+            <span class="lang-zh">{siteDataZh.products.badge}</span>
+          </span>
+          <h2>
+            <span class="lang-en">{siteDataEn.products.title}</span>
+            <span class="lang-zh">{siteDataZh.products.title}</span>
+          </h2>
+          <p class="section-desc">
+            <span class="lang-en">{siteDataEn.products.subTitle}</span>
+            <span class="lang-zh">{siteDataZh.products.subTitle}</span>
+          </p>
+
+          <div class="product-showcase-card">
+            <div class="product-image-box" id="product-slider">
+              <div class="product-slides">
+                <div class="product-slide active" data-full={hero1.src}>
+                  <img src={hero1.src} alt="电动游艇实拍" />
+                </div>
+                <div class="product-slide" data-full={hero2.src}>
+                  <img src={hero2.src} alt="电动船动力系统" />
+                </div>
+                <div class="product-slide" data-full={hero3.src}>
+                  <img src={hero3.src} alt="电池测试" />
+                </div>
+              </div>
+
+              <div class="image-overlay-badge">
+                <span class="lang-en">{siteDataEn.products.overlayBadge}</span>
+                <span class="lang-zh">{siteDataZh.products.overlayBadge}</span>
+              </div>
+
+              <button class="p-arrow p-arrow-left" id="p-prev-slide">‹</button>
+              <button class="p-arrow p-arrow-right" id="p-next-slide">›</button>
+
+              <div class="p-slider-dots">
+                <span class="p-dot active" data-pindex="0"></span>
+                <span class="p-dot" data-pindex="1"></span>
+                <span class="p-dot" data-pindex="2"></span>
+              </div>
+            </div>
+
+            <div class="product-info-box">
+              <!-- <div class="product-header">
+                <span class="product-model">
+                  <span class="lang-en">{siteDataEn.products.model}</span>
+                  <span class="lang-zh">{siteDataZh.products.model}</span>
+                </span>
+                <h3>
+                  <span class="lang-en">{siteDataEn.products.mainCardTitle}</span>
+                  <span class="lang-zh">{siteDataZh.products.mainCardTitle}</span>
+                </h3>
+              </div>-->
+
+              <div class="product-specs-grid">
+                {siteDataEn.products.specs.map((spec, idx) => (
+                  <div class="spec-item">
+                    <span class="spec-val">{spec.val}</span>
+                    <span class="spec-label">
+                      <span class="lang-en">{spec.label}</span>
+                      <span class="lang-zh">{siteDataZh.products.specs[idx].label}</span>
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              <ul class="product-features">
+                {siteDataEn.products.features.map((item, idx) => (
+                  <li>
+                    <span class="check-badge">✓</span>
+                    <div>
+                      <strong>
+                        <span class="lang-en">{item.bold}</span>
+                        <span class="lang-zh">{siteDataZh.products.features[idx].bold}</span>
+                      </strong>
+                      <span>
+                        <span class="lang-en">{item.text}</span>
+                        <span class="lang-zh">{siteDataZh.products.features[idx].text}</span>
+                      </span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              <div class="product-actions">
+                <button class="btn btn-green trigger-quote-modal">
+                  <span class="lang-en">{siteDataEn.products.ctaBtnText}</span>
+                  <span class="lang-zh">{siteDataZh.products.ctaBtnText}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: 核心优势 -->
+      <section id="advantages" class="section advantages-section">
+        <div class="section-inner">
+          <span class="pill-badge-center">
+            <span class="lang-en">{siteDataEn.advantages.badge}</span>
+            <span class="lang-zh">{siteDataZh.advantages.badge}</span>
+          </span>
+          <h2>
+            <span class="lang-en">{siteDataEn.advantages.title}</span>
+            <span class="lang-zh">{siteDataZh.advantages.title}</span>
+          </h2>
+          <p class="section-desc">
+            <span class="lang-en">{siteDataEn.advantages.subTitle}</span>
+            <span class="lang-zh">{siteDataZh.advantages.subTitle}</span>
+          </p>
+
+          <div class="advantages-grid">
+            {siteDataEn.advantages.items.map((item, idx) => (
+              <div class="adv-card">
+                <div class="adv-header">
+                  <div class="adv-icon-box">{item.icon}</div>
+                  <span class="adv-num">{item.num}</span>
+                </div>
+                <h3>
+                  <span class="lang-en">{item.title}</span>
+                  <span class="lang-zh">{siteDataZh.advantages.items[idx].title}</span>
+                </h3>
+                <p>
+                  <span class="lang-en">{item.desc}</span>
+                  <span class="lang-zh">{siteDataZh.advantages.items[idx].desc}</span>
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: 联系我们 -->
+      <section id="contact" class="section contact-section">
+        <div class="section-inner">
+          <span class="pill-badge-center">
+            <span class="lang-en">{siteDataEn.contact.badge}</span>
+            <span class="lang-zh">{siteDataZh.contact.badge}</span>
+          </span>
+          <h2>
+            <span class="lang-en">{siteDataEn.contact.title}</span>
+            <span class="lang-zh">{siteDataZh.contact.title}</span>
+          </h2>
+          <p class="section-desc">
+            <span class="lang-en">{siteDataEn.contact.subTitle}</span>
+            <span class="lang-zh">{siteDataZh.contact.subTitle}</span>
+          </p>
+
+          <div class="contact-grid">
+            {siteDataEn.contact.items.map((item, idx) => (
+              <div class={`contact-card ${item.btnText ? 'contact-card-highlight' : ''}`}>
+                <div class="contact-icon">{item.icon}</div>
+                <h3>
+                  <span class="lang-en">{item.title}</span>
+                  <span class="lang-zh">{siteDataZh.contact.items[idx].title}</span>
+                </h3>
+                {item.desc && (
+                  <p>
+                    <span class="lang-en">{item.desc}</span>
+                    <span class="lang-zh">{siteDataZh.contact.items[idx].desc}</span>
+                  </p>
+                )}
+                {item.btnText && (
+                  <button class="btn btn-green trigger-quote-modal">
+                    <span class="lang-en">{item.btnText}</span>
+                    <span class="lang-zh">{siteDataZh.contact.items[idx].btnText}</span>
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 6. 底部 Footer -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-col footer-brand">
+          <div class="footer-logo">
+            <span class="logo-icon">🔋</span>
+            <span class="logo-text">
+              <span class="lang-en">{siteDataEn.siteName}</span>
+              <span class="lang-zh">{siteDataZh.siteName}</span>
+            </span>
+          </div>
+          <p class="brand-desc">
+            <span class="lang-en">{siteDataEn.footer.brandDesc}</span>
+            <span class="lang-zh">{siteDataZh.footer.brandDesc}</span>
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>
+            <span class="lang-en">{siteDataEn.footer.productsTitle}</span>
+            <span class="lang-zh">{siteDataZh.footer.productsTitle}</span>
+          </h4>
+          <ul>
+            {siteDataEn.footer.productsLinks.map((link, idx) => (
+              <li>
+                <a href="#products">
+                  <span class="lang-en">{link}</span>
+                  <span class="lang-zh">{siteDataZh.footer.productsLinks[idx]}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>
+            <span class="lang-en">{siteDataEn.footer.qualitiesTitle}</span>
+            <span class="lang-zh">{siteDataZh.footer.qualitiesTitle}</span>
+          </h4>
+          <ul>
+            {siteDataEn.footer.qualitiesList.map((item, idx) => (
+              <li>
+                <span>
+                  <span class="lang-en">{item}</span>
+                  <span class="lang-zh">{siteDataZh.footer.qualitiesList[idx]}</span>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>
+            <span class="lang-en">{siteDataEn.footer.headquartersTitle}</span>
+            <span class="lang-zh">{siteDataZh.footer.headquartersTitle}</span>
+          </h4>
+          <ul class="contact-list">
+            <li>
+              <span class="lang-en">{siteDataEn.footer.address}</span>
+              <span class="lang-zh">{siteDataZh.footer.address}</span>
+            </li>
+            <li>{siteDataEn.footer.tel}</li>
+            <li>{siteDataEn.footer.email}</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-bottom-container">
+          <p class="copyright">
+            <span class="lang-en">{siteDataEn.footer.copyright}</span>
+            <span class="lang-zh">{siteDataZh.footer.copyright}</span>
+          </p>
+          <div class="legal-links">
+            <a href="#">
+              <span class="lang-en">{siteDataEn.footer.privacyText}</span>
+              <span class="lang-zh">{siteDataZh.footer.privacyText}</span>
+            </a>
+            <a href="#">
+              <span class="lang-en">{siteDataEn.footer.icpText}</span>
+              <span class="lang-zh">{siteDataZh.footer.icpText}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 弹窗 -->
+    <div id="image-modal" class="image-modal">
+      <div class="modal-content-wrapper">
+        <button id="close-modal" class="modal-close-btn">✕</button>
+        <button id="modal-prev" class="modal-nav-btn modal-prev-btn">‹</button>
+        <img id="modal-img" src="" alt="大图" />
+        <button id="modal-next" class="modal-nav-btn modal-next-btn">›</button>
+        <div id="modal-counter" class="modal-counter">1 / 3</div>
+      </div>
+    </div>
+
+    <div id="quote-modal" class="quote-modal">
+      <div class="quote-card">
+        <button id="close-quote-modal" class="quote-close-btn">✕</button>
+        <div class="quote-header">
+          <h2>
+            <span class="lang-en">Inquire for Customized Quote</span>
+            <span class="lang-zh">在线递交定制留言与大货报价申请</span>
+          </h2>
+          <p>
+            <span class="lang-en">Please fill in your battery specifications and requirements for our engineers to calculate costs.</span>
+            <span class="lang-zh">请详细填写您的电池技术指标和需求，以便我们的工程师为您核算精确的成本数据。</span>
+          </p>
+        </div>
+        <form id="quote-form" class="quote-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label>FULL NAME*</label>
+              <input type="text" required placeholder="e.g. Mr. Muller" />
+            </div>
+            <div class="form-group">
+              <label>WORK EMAIL*</label>
+              <input type="email" required placeholder="example@company.com" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>COMPANY NAME*</label>
+              <input type="text" required placeholder="e.g. JC Storage Ltd." />
+            </div>
+            <div class="form-group">
+              <label>COUNTRY / REGION*</label>
+              <input type="text" required placeholder="e.g. Germany, USA" />
+            </div>
+          </div>
+          <div class="form-row grid-3">
+            <div class="form-group">
+              <label>VOLTAGE</label>
+              <input type="text" placeholder="e.g. 51.2V / 384V" />
+            </div>
+            <div class="form-group">
+              <label>CAPACITY</label>
+              <input type="text" placeholder="e.g. 100Ah / 280Ah" />
+            </div>
+            <div class="form-group">
+              <label>QUANTITY</label>
+              <input type="text" placeholder="e.g. 500 packs" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>DETAILED REQUIREMENTS*</label>
+            <textarea rows="4" required placeholder="Describe your application scenario..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            <span class="lang-en">Submit Inquiry ➔</span>
+            <span class="lang-zh">提交定制申请 ➔</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="../scripts/main.js"></script>
+  </body>
 </html>
