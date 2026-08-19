@@ -155,9 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setLanguage(currentIsZh ? 'en' : 'zh');
   });
 
-  // ====================================================
-  // 4. 在线获取报价/定制留言表单弹窗 (Quote Modal)
-  // ====================================================
+  // 4. 在线获取报价表单 Ajax 异步提交 (对接 Web3Forms 实时发邮件)
   const quoteModal = document.getElementById('quote-modal');
   const closeQuoteModal = document.getElementById('close-quote-modal');
   const triggerQuoteBtns = document.querySelectorAll('.trigger-quote-modal');
@@ -177,11 +175,36 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target === quoteModal) quoteModal.classList.remove('open');
   });
 
-  quoteForm?.addEventListener('submit', (e) => {
+  quoteForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
-    alert('✅ 您的定制申请已成功提交！我们的工程师将尽快为您核算并回复邮箱！');
-    quoteForm.reset();
-    quoteModal?.classList.remove('open');
+    const submitBtn = quoteForm.querySelector('.btn-submit');
+    const originalBtnText = submitBtn.innerHTML;
+
+    // 提交中状态提示
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = 'Sending... / 正在发送...';
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(quoteForm)
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        alert('✅ Success! Your inquiry has been sent to our engineers. We will contact you soon!\n提交成功！我们的工程师将尽快核算并回复您的邮箱！');
+        quoteForm.reset();
+        quoteModal?.classList.remove('open');
+      } else {
+        alert('❌ Submission failed / 提交失败: ' + data.message);
+      }
+    } catch (error) {
+      alert('❌ Network error, please try again / 网络错误，请稍后重试！');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = originalBtnText;
+    }
   });
 
   // ====================================================

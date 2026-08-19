@@ -550,44 +550,55 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
           </p>
         </div>
         <form id="quote-form" class="quote-form">
+          <!-- 1. 替换为你从 Web3Forms 收到的真实 Access Key -->
+          <input type="hidden" name="access_key" value="2795e4fe-dac3-4591-b6ae-90fd43f10fa4" />
+          
+          <!-- 2. 自定义邮件标题与发送者名称 -->
+          <input type="hidden" name="subject" value="New Battery Quote Inquiry - JC New Energy" />
+          <input type="hidden" name="from_name" value="JC New Energy Website" />
+
           <div class="form-row">
             <div class="form-group">
               <label>FULL NAME*</label>
-              <input type="text" required placeholder="e.g. Mr. Muller" />
+              <input type="text" name="name" required placeholder="e.g. Mr. Muller" />
             </div>
             <div class="form-group">
               <label>WORK EMAIL*</label>
-              <input type="email" required placeholder="example@company.com" />
+              <input type="email" name="email" required placeholder="example@company.com" />
             </div>
           </div>
+
           <div class="form-row">
             <div class="form-group">
               <label>COMPANY NAME*</label>
-              <input type="text" required placeholder="e.g. JC Storage Ltd." />
+              <input type="text" name="company" required placeholder="e.g. JC Storage Ltd." />
             </div>
             <div class="form-group">
               <label>COUNTRY / REGION*</label>
-              <input type="text" required placeholder="e.g. Germany, USA" />
+              <input type="text" name="country" required placeholder="e.g. Germany, USA" />
             </div>
           </div>
+
           <div class="form-row grid-3">
             <div class="form-group">
               <label>VOLTAGE</label>
-              <input type="text" placeholder="e.g. 51.2V / 384V" />
+              <input type="text" name="voltage" placeholder="e.g. 51.2V / 384V" />
             </div>
             <div class="form-group">
               <label>CAPACITY</label>
-              <input type="text" placeholder="e.g. 100Ah / 280Ah" />
+              <input type="text" name="capacity" placeholder="e.g. 100Ah / 280Ah" />
             </div>
             <div class="form-group">
               <label>QUANTITY</label>
-              <input type="text" placeholder="e.g. 500 packs" />
+              <input type="text" name="quantity" placeholder="e.g. 500 packs" />
             </div>
           </div>
+
           <div class="form-group">
             <label>DETAILED REQUIREMENTS*</label>
-            <textarea rows="4" required placeholder="Describe your application scenario..."></textarea>
+            <textarea name="requirements" rows="4" required placeholder="Describe your application scenario..."></textarea>
           </div>
+
           <button type="submit" class="btn-submit">
             <span class="lang-en">Submit Inquiry ➔</span>
             <span class="lang-zh">提交定制申请 ➔</span>
