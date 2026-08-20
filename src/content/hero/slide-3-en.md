@@ -12,8 +12,8 @@ ctaLink1: "/#products"
 ctaText2: "Request Custom Solution"
 ctaLink2: "/#contact"
 gallery: [
-  "../../assets/images/cp_img1.jpg",
-  "../../assets/images/cp_img2.jpg",
-  "../../assets/images/cp_img3.jpg"
+  "../../assets/images/cp_img7.jpg",
+  "../../assets/images/cp_img8.jpg",
+  "../../assets/images/cp_img9.jpg"
 ]
 ---

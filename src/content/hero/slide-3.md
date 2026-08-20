@@ -12,8 +12,8 @@ ctaLink1: "/#products"
 ctaText2: "索取定制方案"
 ctaLink2: "/contact"
 gallery: [
-  "../../assets/images/cp_img1.jpg",          # 👈 本地相对路径
-  "../../assets/images/cp_img2.jpg",          # 👈 本地相对路径
-  "../../assets/images/cp_img3.jpg"           # 👈 本地相对路径
+  "../../assets/images/cp_img7.jpg",          # 👈 本地相对路径
+  "../../assets/images/cp_img8.jpg",          # 👈 本地相对路径
+  "../../assets/images/cp_img9.jpg"           # 👈 本地相对路径
 ]
 ---
