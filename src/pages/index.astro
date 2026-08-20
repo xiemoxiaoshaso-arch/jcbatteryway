@@ -502,72 +502,148 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
       </div>
     </div>
 
+    <!-- 8. 获取报价表单弹窗 (已提取至 siteData.ts，支持双语) -->
     <div id="quote-modal" class="quote-modal">
       <div class="quote-card">
         <button id="close-quote-modal" class="quote-close-btn">✕</button>
         <div class="quote-header">
           <h2>
-            <span class="lang-en">Inquire for Customized Quote</span>
-            <span class="lang-zh">在线递交定制留言与报价申请</span>
+            <span class="lang-en">{siteDataEn.quoteModal.title}</span>
+            <span class="lang-zh">{siteDataZh.quoteModal.title}</span>
           </h2>
           <p>
-            <span class="lang-en">Please fill in your battery specifications and requirements for our engineers to calculate costs.</span>
-            <span class="lang-zh">请详细填写您的电池技术指标和需求，以便我们的工程师为您核算精确的成本数据。</span>
+            <span class="lang-en">{siteDataEn.quoteModal.subTitle}</span>
+            <span class="lang-zh">{siteDataZh.quoteModal.subTitle}</span>
           </p>
         </div>
         <form id="quote-form" class="quote-form">
-          <!-- 1. 替换为你从 Web3Forms 收到的真实 Access Key -->
+          <!-- Web3Forms 真实密钥保持不变 -->
           <input type="hidden" name="access_key" value="2795e4fe-dac3-4591-b6ae-90fd43f10fa4" />
-          
-          <!-- 2. 自定义邮件标题与发送者名称 -->
           <input type="hidden" name="subject" value="New Battery Quote Inquiry - JC New Energy" />
           <input type="hidden" name="from_name" value="JC New Energy Website" />
 
           <div class="form-row">
             <div class="form-group">
-              <label>FULL NAME*</label>
-              <input type="text" name="name" required placeholder="e.g. Mr. Muller" />
+              <label>
+                <span class="lang-en">{siteDataEn.quoteModal.labels.name}</span>
+                <span class="lang-zh">{siteDataZh.quoteModal.labels.name}</span>
+              </label>
+              <input 
+                type="text" 
+                name="name" 
+                required 
+                data-placeholder-en={siteDataEn.quoteModal.placeholders.name}
+                data-placeholder-zh={siteDataZh.quoteModal.placeholders.name}
+                placeholder={siteDataEn.quoteModal.placeholders.name} 
+              />
             </div>
             <div class="form-group">
-              <label>WORK EMAIL*</label>
-              <input type="email" name="email" required placeholder="example@company.com" />
+              <label>
+                <span class="lang-en">{siteDataEn.quoteModal.labels.email}</span>
+                <span class="lang-zh">{siteDataZh.quoteModal.labels.email}</span>
+              </label>
+              <input 
+                type="email" 
+                name="email" 
+                required 
+                data-placeholder-en={siteDataEn.quoteModal.placeholders.email}
+                data-placeholder-zh={siteDataZh.quoteModal.placeholders.email}
+                placeholder={siteDataEn.quoteModal.placeholders.email} 
+              />
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label>COMPANY NAME*</label>
-              <input type="text" name="company" required placeholder="e.g. JC Storage Ltd." />
+              <label>
+                <span class="lang-en">{siteDataEn.quoteModal.labels.company}</span>
+                <span class="lang-zh">{siteDataZh.quoteModal.labels.company}</span>
+              </label>
+              <input 
+                type="text" 
+                name="company" 
+                required 
+                data-placeholder-en={siteDataEn.quoteModal.placeholders.company}
+                data-placeholder-zh={siteDataZh.quoteModal.placeholders.company}
+                placeholder={siteDataEn.quoteModal.placeholders.company} 
+              />
             </div>
             <div class="form-group">
-              <label>COUNTRY / REGION*</label>
-              <input type="text" name="country" required placeholder="e.g. Germany, USA" />
+              <label>
+                <span class="lang-en">{siteDataEn.quoteModal.labels.country}</span>
+                <span class="lang-zh">{siteDataZh.quoteModal.labels.country}</span>
+              </label>
+              <input 
+                type="text" 
+                name="country" 
+                required 
+                data-placeholder-en={siteDataEn.quoteModal.placeholders.country}
+                data-placeholder-zh={siteDataZh.quoteModal.placeholders.country}
+                placeholder={siteDataEn.quoteModal.placeholders.country} 
+              />
             </div>
           </div>
 
           <div class="form-row grid-3">
             <div class="form-group">
-              <label>VOLTAGE</label>
-              <input type="text" name="voltage" placeholder="e.g. 51.2V / 384V" />
+              <label>
+                <span class="lang-en">{siteDataEn.quoteModal.labels.voltage}</span>
+                <span class="lang-zh">{siteDataZh.quoteModal.labels.voltage}</span>
+              </label>
+              <input 
+                type="text" 
+                name="voltage" 
+                data-placeholder-en={siteDataEn.quoteModal.placeholders.voltage}
+                data-placeholder-zh={siteDataZh.quoteModal.placeholders.voltage}
+                placeholder={siteDataEn.quoteModal.placeholders.voltage} 
+              />
             </div>
             <div class="form-group">
-              <label>CAPACITY</label>
-              <input type="text" name="capacity" placeholder="e.g. 100Ah / 280Ah" />
+              <label>
+                <span class="lang-en">{siteDataEn.quoteModal.labels.capacity}</span>
+                <span class="lang-zh">{siteDataZh.quoteModal.labels.capacity}</span>
+              </label>
+              <input 
+                type="text" 
+                name="capacity" 
+                data-placeholder-en={siteDataEn.quoteModal.placeholders.capacity}
+                data-placeholder-zh={siteDataZh.quoteModal.placeholders.capacity}
+                placeholder={siteDataEn.quoteModal.placeholders.capacity} 
+              />
             </div>
             <div class="form-group">
-              <label>QUANTITY</label>
-              <input type="text" name="quantity" placeholder="e.g. 500 packs" />
+              <label>
+                <span class="lang-en">{siteDataEn.quoteModal.labels.quantity}</span>
+                <span class="lang-zh">{siteDataZh.quoteModal.labels.quantity}</span>
+              </label>
+              <input 
+                type="text" 
+                name="quantity" 
+                data-placeholder-en={siteDataEn.quoteModal.placeholders.quantity}
+                data-placeholder-zh={siteDataZh.quoteModal.placeholders.quantity}
+                placeholder={siteDataEn.quoteModal.placeholders.quantity} 
+              />
             </div>
           </div>
 
           <div class="form-group">
-            <label>DETAILED REQUIREMENTS*</label>
-            <textarea name="requirements" rows="4" required placeholder="Describe your application scenario..."></textarea>
+            <label>
+              <span class="lang-en">{siteDataEn.quoteModal.labels.requirements}</span>
+              <span class="lang-zh">{siteDataZh.quoteModal.labels.requirements}</span>
+            </label>
+            <textarea 
+              name="requirements" 
+              rows="4" 
+              required 
+              data-placeholder-en={siteDataEn.quoteModal.placeholders.requirements}
+              data-placeholder-zh={siteDataZh.quoteModal.placeholders.requirements}
+              placeholder={siteDataEn.quoteModal.placeholders.requirements}
+            ></textarea>
           </div>
 
           <button type="submit" class="btn-submit">
-            <span class="lang-en">Submit Inquiry ➔</span>
-            <span class="lang-zh">提交定制申请 ➔</span>
+            <span class="lang-en">{siteDataEn.quoteModal.btnText}</span>
+            <span class="lang-zh">{siteDataZh.quoteModal.btnText}</span>
           </button>
         </form>
       </div>

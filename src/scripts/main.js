@@ -148,6 +148,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (langText) langText.textContent = '中文';
     }
     localStorage.setItem('site-lang', lang);
+    // 👈 切换时同步更新表单所有输入框的 Placeholder 提示词
+    const formInputs = document.querySelectorAll('[data-placeholder-en]');
+    formInputs.forEach(input => {
+      const ph = input.getAttribute(`data-placeholder-${lang}`);
+      if (ph) input.placeholder = ph;
+    });
   }
 
   langBtn?.addEventListener('click', () => {

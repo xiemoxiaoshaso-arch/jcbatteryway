@@ -98,6 +98,34 @@ export const siteDataEn = {
       }
     ]
   },
+
+  // 7. Quote Form Modal (English)
+  quoteModal: {
+    title: "Inquire for Customized Quote",
+    subTitle: "Please fill in your battery specifications and requirements for our engineers to calculate costs.",
+    labels: {
+      name: "FULL NAME*",
+      email: "WORK EMAIL*",
+      company: "COMPANY NAME*",
+      country: "COUNTRY / REGION*",
+      voltage: "VOLTAGE",
+      capacity: "CAPACITY",
+      quantity: "QUANTITY",
+      requirements: "DETAILED REQUIREMENTS*",
+    },
+    placeholders: {
+      name: "e.g. Mr. Muller",
+      email: "example@company.com",
+      company: "e.g. JC Storage Ltd.",
+      country: "e.g. Germany, USA",
+      voltage: "e.g. 51.2V / 384V",
+      capacity: "e.g. 100Ah / 280Ah",
+      quantity: "e.g. 500 packs",
+      requirements: "Describe your application scenario...",
+    },
+    btnText: "Submit Inquiry ➔"
+  },
+
   contact: {
     badge: "CONTACT US",
     title: "Contact Us",
@@ -225,6 +253,33 @@ export const siteDataZh = {
         desc: "整包通过 IP67 防水防盐雾腐蚀测试，加固抗海浪冲击316L材质箱体，全面满足国际严苛的海事安全规范。"
       }
     ]
+  },
+
+  // 7. Quote Form Modal (中文)
+  quoteModal: {
+    title: "在线递交定制留言与报价申请",
+    subTitle: "请详细填写您的电池技术指标和需求，以便我们的工程师为您核算精确的成本数据。",
+    labels: {
+      name: "您的姓名*",
+      email: "企业邮箱*",
+      company: "公司名称*",
+      country: "国家 / 地区*",
+      voltage: "定制电压",
+      capacity: "定制容量",
+      quantity: "首期需求量",
+      requirements: "具体定制需求或应用场景*",
+    },
+    placeholders: {
+      name: "例如：工程师 Mr. Muller",
+      email: "example@company.com",
+      company: "例如：JC Storage Ltd.",
+      country: "例如：德国、北美",
+      voltage: "如：51.2V / 384V",
+      capacity: "如：100Ah / 280Ah",
+      quantity: "如：500 组",
+      requirements: "例如：我们需要将电池用于工商业液冷储能项目，逆变器品牌是固德威，要求带 CAN 协议通讯...",
+    },
+    btnText: "提交定制申请 ➔"
   },
 
   contact: {
