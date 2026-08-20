@@ -1,6 +1,6 @@
 // src/data/siteData.ts
 
-// 1. 默认英文配置 (Default English - 基于你最新修正的真实数据)
+// 1. 默认英文配置 (Default English - 已精准同步最新中文修正)
 export const siteDataEn = {
   siteName: "JC NEW ENERGY",
   siteSubTitle: "JC BATTERY WAY",
@@ -21,7 +21,7 @@ export const siteDataEn = {
     mainTitle: "Smart Manufacturing · Empowering Clean Energy",
     paragraphs: [
       "Yongkang JC New Energy Co., Ltd. is a high-tech enterprise integrating R&D, production, and sales of lithium-ion batteries. The company has tens of thousands of square meters of modern standard plants and smart dust-free workshops, equipped with industry-leading fully automated battery packaging and testing equipment.",
-      "We focus on high-safety, long-life LFP cell applications, certified by ISO9001, CE, UN38.3, and widely serving global electric marine and commercial ESS markets."
+      "We focus on high-safety, high-energy-density NMC and LFP cell applications, certified by ISO9001, CE, UN38.3, and widely serving global high-end markets such as electric marine vessels, medical devices, and commercial ESS."
     ],
     stats: [
       { num: "15+", label: "Years Experience" },
@@ -69,25 +69,25 @@ export const siteDataEn = {
         num: "01",
         icon: "🛡️",
         title: "Ultimate Safety Defense",
-        desc: "Multiple thermal runaway protection & solid-state separators to eliminate safety hazards at source."
+        desc: "Multiple thermal runaway protection technologies combined with automotive-grade explosion-proof pressure relief design to eliminate safety hazards at source."
       },
       {
         num: "02",
         icon: "⚡",
         title: "Ultra-Long Cycle Life",
-        desc: "High-stability LFP material & proprietary electrolyte formula, 6000+ cycle life at ambient temp."
+        desc: "Powered by ternary system (NMC) cells from top-tier domestic manufacturers, achieving 3000+ cycles at ambient temperature with lower lifetime cost."
       },
       {
         num: "03",
         icon: "🧠",
         title: "Smart BMS Management",
-        desc: "Proprietary cloud BMS for 24/7 thermal warning & high-precision algorithm for SOC/SOH estimation."
+        desc: "Customized BMS from Tier-1 manufacturers, supporting 24/7 thermal runaway warning and high-precision algorithms for accurate SOC/SOH estimation."
       },
       {
         num: "04",
         icon: "⚓",
         title: "Deep-Sea Anti-Corrosion",
-        desc: "IP67 waterproof & salt-spray resistant, reinforced anti-wave casing meeting marine safety norms."
+        desc: "IP67 waterproof & salt-spray resistant, reinforced 316L stainless steel anti-wave casing, fully meeting international marine safety standards."
       }
     ]
   },
@@ -118,7 +118,7 @@ export const siteDataEn = {
   }
 };
 
-// 2. 中文词典 (基于你最新修正的真实数据)
+// 2. 中文词典 (你最新提交的版本)
 export const siteDataZh = {
   siteName: "嘉程新能源",
   siteSubTitle: "JC BATTERY WAY",
@@ -241,5 +241,5 @@ export const siteDataZh = {
   }
 };
 
-// 默认导出英文词典 (Default Exports English)
+// 默认导出英文词典
 export const siteData = siteDataEn;
