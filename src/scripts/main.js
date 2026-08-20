@@ -213,29 +213,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ====================================================
-  // 5. 页面滚动时更新导航高亮
-  // ====================================================
-  const sections = document.querySelectorAll('section');
-  const dotItems = document.querySelectorAll('.dot-item');
-  const navLinks = document.querySelectorAll('.nav-link');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        dotItems.forEach(dot => dot.classList.toggle('active', dot.getAttribute('data-section') === id));
-        navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${id}`));
-      }
-    });
-  }, { threshold: 0.4 });
-
-  sections.forEach((section) => observer.observe(section));
-});
-
-
-
-// 厂房/装备卡片迷你小轮播与大图画廊逻辑
+  // 厂房/装备卡片迷你小轮播与大图画廊逻辑
   const factoryCards = document.querySelectorAll('.factory-slider');
 
   factoryCards.forEach((card) => {
@@ -279,3 +257,26 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // ====================================================
+  // 5. 页面滚动时更新导航高亮
+  // ====================================================
+  const sections = document.querySelectorAll('section');
+  const dotItems = document.querySelectorAll('.dot-item');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        dotItems.forEach(dot => dot.classList.toggle('active', dot.getAttribute('data-section') === id));
+        navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${id}`));
+      }
+    });
+  }, { threshold: 0.4 });
+
+  sections.forEach((section) => observer.observe(section));
+});
+
+
+
