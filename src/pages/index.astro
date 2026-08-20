@@ -14,6 +14,9 @@ import hero1 from '../assets/images/hero-bg1.jpg';
 import hero2 from '../assets/images/hero-bg2.png';
 import hero3 from '../assets/images/hero-bg3.png';
 
+// 👈 组合为数组方便 map 循环
+const workshops = [workshop1, workshop2, workshop3, workshop4];
+
 // 读取 Markdown 轮播集合，分别提取英文和中文 Slide
 const rawSlides = await getCollection('hero');
 const slidesEn = rawSlides
@@ -192,69 +195,32 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
               ))}
             </div>
           </div>
-
-          <!-- 硬件实力展示 -->
+          <!-- 硬件实力展示 (已完全提取至 siteData.ts) -->
           <div class="factory-showcase">
             <h3 class="showcase-title">
               <span class="lang-en">{siteDataEn.about.showcaseTitle}</span>
               <span class="lang-zh">{siteDataZh.about.showcaseTitle}</span>
             </h3>
             <div class="factory-grid">
-              <div class="factory-card thumb-card" data-full={workshop1.src}>
-                <img src={workshop1.src} alt="研发基地" />
-                <div class="factory-info">
-                  <span class="factory-tag">
-                    <span class="lang-en">R&D Base</span>
-                    <span class="lang-zh">研发基地</span>
-                  </span>
-                  <h4>
-                    <span class="lang-en">Modern R&D Park</span>
-                    <span class="lang-zh">现代化智造园区</span>
-                  </h4>
-                </div>
-              </div>
-
-              <div class="factory-card thumb-card" data-full={workshop2.src}>
-                <img src={workshop2.src} alt="无尘车间" />
-                <div class="factory-info">
-                  <span class="factory-tag">
-                    <span class="lang-en">Cleanroom</span>
-                    <span class="lang-zh">无尘车间</span>
-                  </span>
-                  <h4>
-                    <span class="lang-en">Automated Workshop</span>
-                    <span class="lang-zh">全自动化生产车间</span>
-                  </h4>
-                </div>
-              </div>
-
-              <div class="factory-card thumb-card" data-full={workshop3.src}>
-                <img src={workshop3.src} alt="精密装备" />
-                <div class="factory-info">
-                  <span class="factory-tag">
-                    <span class="lang-en">Equipment</span>
-                    <span class="lang-zh">精密装备</span>
-                  </span>
-                  <h4>
-                    <span class="lang-en">Precision Testing Setup</span>
-                    <span class="lang-zh">高精度检测加工设备</span>
-                  </h4>
-                </div>
-              </div>
-
-              <div class="factory-card thumb-card" data-full={workshop4.src}>
-                <img src={workshop4.src} alt="智能库房" />
-                <div class="factory-info">
-                  <span class="factory-tag">
-                    <span class="lang-en">Warehouse</span>
-                    <span class="lang-zh">智能库房</span>
-                  </span>
-                  <h4>
-                    <span class="lang-en">Smart Logistics Center</span>
-                    <span class="lang-zh">恒温成品与仓储中心</span>
-                  </h4>
-                </div>
-              </div>
+              {siteDataEn.about.showcaseList.map((itemEn, idx) => {
+                const itemZh = siteDataZh.about.showcaseList[idx];
+                const img = workshops[idx];
+                return (
+                  <div class="factory-card thumb-card" data-full={img.src}>
+                    <img src={img.src} alt={itemEn.title} />
+                    <div class="factory-info">
+                      <span class="factory-tag">
+                        <span class="lang-en">{itemEn.tag}</span>
+                        <span class="lang-zh">{itemZh.tag}</span>
+                      </span>
+                      <h4>
+                        <span class="lang-en">{itemEn.title}</span>
+                        <span class="lang-zh">{itemZh.title}</span>
+                      </h4>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

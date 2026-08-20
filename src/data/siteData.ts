@@ -30,6 +30,13 @@ export const siteDataEn = {
       { num: "30+", label: "Countries Served" },
     ],
     showcaseTitle: "🏢 Modern Manufacturing Base & Equipment Strength",
+    // 👈 新增 4 项硬件实力卡片列表 (英文)
+    showcaseList: [
+      { tag: "R&D Base", title: "Modern R&D Park" },
+      { tag: "Cleanroom", title: "Automated Workshop" },
+      { tag: "Equipment", title: "Precision Testing Setup" },
+      { tag: "Warehouse", title: "Smart Logistics Center" }
+    ],
   },
   products: {
     badge: "SUPER ISLAND SERIES",
@@ -149,6 +156,13 @@ export const siteDataZh = {
       { num: "30+", label: "覆盖国家与地区" },
     ],
     showcaseTitle: "🏢 现代化生产基地与装备实力",
+    // 👈 新增 4 项硬件实力卡片列表 (中文)
+    showcaseList: [
+      { tag: "研发基地", title: "现代化智造园区" },
+      { tag: "无尘车间", title: "全自动化生产车间" },
+      { tag: "精密装备", title: "高精度检测加工设备" },
+      { tag: "智能库房", title: "恒温成品与仓储中心" }
+    ],
   },
 
   products: {
