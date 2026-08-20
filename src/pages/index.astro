@@ -5,17 +5,36 @@ import { siteDataEn, siteDataZh } from '../data/siteData';
 import '../styles/global.css';
 
 // 导入本地图片
+// 1. 研发基地
 import workshop1 from '../assets/images/workshop-1.jpg';
+import workshop101 from '../assets/images/workshop-101.jpg';
+
+// 2. 无尘车间
 import workshop2 from '../assets/images/workshop-2.jpg';
+import workshop201 from '../assets/images/workshop-201.jpg';
+import workshop202 from '../assets/images/workshop-202.jpg';
+import workshop203 from '../assets/images/workshop-203.jpg';
+
+// 3. 精密装备
 import workshop3 from '../assets/images/workshop-3.jpg';
+import workshop301 from '../assets/images/workshop-301.jpg';
+// 4. 智能库房
 import workshop4 from '../assets/images/workshop-4.jpg';
+import workshop401 from '../assets/images/workshop-401.jpg';
+
+
 import logoImg from '../assets/images/logo.png';
 import hero1 from '../assets/images/hero-bg1.jpg';
 import hero2 from '../assets/images/hero-bg2.png';
 import hero3 from '../assets/images/hero-bg3.png';
 
-// 👈 组合为数组方便 map 循环
-const workshops = [workshop1, workshop2, workshop3, workshop4];
+// 👈 为 4 个分类各配置 3 张照片 (你可以将后面的图片换成你真实准备好的其他照片文件名)
+const workshopGalleries = [
+  [workshop1, workshop101], // 1. 研发基地：3张照片
+  [workshop2, workshop201, workshop202, workshop203], // 2. 无尘车间：3张照片
+  [workshop3, workshop301], // 3. 精密装备：3张照片
+  [workshop4, workshop401]  // 4. 智能库房：3张照片
+];
 
 // 读取 Markdown 轮播集合，分别提取英文和中文 Slide
 const rawSlides = await getCollection('hero');
@@ -195,7 +214,7 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
               ))}
             </div>
           </div>
-          <!-- 硬件实力展示 (已完全提取至 siteData.ts) -->
+          <!-- 硬件实力展示 (升级为 4 个独立小轮播卡片) -->
           <div class="factory-showcase">
             <h3 class="showcase-title">
               <span class="lang-en">{siteDataEn.about.showcaseTitle}</span>
@@ -204,10 +223,35 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
             <div class="factory-grid">
               {siteDataEn.about.showcaseList.map((itemEn, idx) => {
                 const itemZh = siteDataZh.about.showcaseList[idx];
-                const img = workshops[idx];
+                const images = workshopGalleries[idx] || [workshop1];
                 return (
-                  <div class="factory-card thumb-card" data-full={img.src}>
-                    <img src={img.src} alt={itemEn.title} />
+                  <div class="factory-card factory-slider" data-card-idx={idx}>
+                    <!-- 多图轮播层 -->
+                    <div class="factory-slides">
+                      {images.map((img, imgIdx) => (
+                        <div 
+                          class={`factory-slide ${imgIdx === 0 ? 'active' : ''}`}
+                          data-full={img.src}
+                        >
+                          <img src={img.src} alt={itemEn.title} />
+                        </div>
+                      ))}
+                    </div>
+
+                    <!-- 迷你切换箭头 (只有多于1张图时才显示) -->
+                    {images.length > 1 && (
+                      <>
+                        <button class="f-arrow f-arrow-left">‹</button>
+                        <button class="f-arrow f-arrow-right">›</button>
+                        <div class="f-dots">
+                          {images.map((_, dotIdx) => (
+                            <span class={`f-dot ${dotIdx === 0 ? 'active' : ''}`} data-fdot={dotIdx}></span>
+                          ))}
+                        </div>
+                      </>
+                    )}
+
+                    <!-- 底部文字面板 -->
                     <div class="factory-info">
                       <span class="factory-tag">
                         <span class="lang-en">{itemEn.tag}</span>

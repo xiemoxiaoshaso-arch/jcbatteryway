@@ -232,3 +232,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sections.forEach((section) => observer.observe(section));
 });
+
+
+
+// 厂房/装备卡片迷你小轮播与大图画廊逻辑
+  const factoryCards = document.querySelectorAll('.factory-slider');
+
+  factoryCards.forEach((card) => {
+    const fSlides = card.querySelectorAll('.factory-slide');
+    const fDots = card.querySelectorAll('.f-dot');
+    const fPrevBtn = card.querySelector('.f-arrow-left');
+    const fNextBtn = card.querySelector('.f-arrow-right');
+    let fIdx = 0;
+
+    function showFSlide(index) {
+      if (fSlides.length <= 1) return;
+      fSlides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+      fDots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+      fIdx = index;
+    }
+
+    // 箭头切换 (阻止冒泡，防止误打开全屏大图)
+    fNextBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showFSlide((fIdx + 1) % fSlides.length);
+    });
+
+    fPrevBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showFSlide((fIdx - 1 + fSlides.length) % fSlides.length);
+    });
+
+    fDots.forEach((dot, i) => {
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showFSlide(i);
+      });
+    });
+
+    // 点击卡片，把该卡片分类里的所有图片打包进全屏画廊弹窗
+    card.addEventListener('click', () => {
+      galleryImages = Array.from(fSlides).map(s => s.getAttribute('data-full')).filter(Boolean);
+      if (galleryImages.length > 0) {
+        updateGalleryModal(fIdx); // 从当前小轮播显示的图片开始放大
+        if (imageModal) imageModal.classList.add('open');
+      }
+    });
+  });
