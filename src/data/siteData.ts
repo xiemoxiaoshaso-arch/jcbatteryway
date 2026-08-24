@@ -37,34 +37,71 @@ export const siteDataEn = {
       { tag: "Warehouse", title: "Smart Logistics Center" }
     ],
   },
+  // 3. Products Section (Multi-Product List)
   products: {
     badge: "SUPER ISLAND SERIES",
-    title: "SUPER ISLAND 90kWh Marine Power Battery Pack",
+    title: "SUPER ISLAND Marine Battery Systems",
     subTitle: "High Efficiency · Low Carbon · Powerful Drive for Electric Yachts & Commercial Vessels",
-    model: "MODEL: SUPER ISLAND 90kWh",
-    mainCardTitle: "90kWh High-Efficiency Marine Power Battery Pack",
-    overlayBadge: "🔍 Click for Gallery | 🛡️ ISO9001 Certified",
-    specs: [
-      { val: "90 kWh", label: "Nominal Capacity" },
-      { val: "60 L", label: "Gasoline Equivalent" },
-      { val: "120,000 L", label: "Lifetime Fuel Saved" },
-      { val: "1.5 - 2.5", label: "Efficiency (kWh/km)" },
-    ],
-    features: [
+    list: [
       {
-        bold: "Decarbonization & Fuel Saving: ",
-        text: "Single pack provides 60L gasoline equivalent energy, saving ~120,000L fuel over lifetime."
+        id: "90kwh",
+        badge: "SUPER ISLAND SERIES",
+        title: "SUPER ISLAND 90kWh Marine Power Battery Pack",
+        model: "MODEL: SUPER ISLAND 90kWh",
+        mainCardTitle: "90kWh High-Efficiency Marine Power Battery Pack",
+        overlayBadge: "🔍 Click for Gallery | 🛡️ ISO9001 Certified",
+        specs: [
+          { val: "90 kWh", label: "Nominal Capacity" },
+          { val: "60 L", label: "Gasoline Equivalent" },
+          { val: "120,000 L", label: "Lifetime Fuel Saved" },
+          { val: "1.5 - 2.5", label: "Efficiency (kWh/km)" },
+        ],
+        features: [
+          {
+            bold: "Decarbonization & Fuel Saving: ",
+            text: "Single pack provides 60L gasoline equivalent energy, saving ~120,000L fuel over lifetime."
+          },
+          {
+            bold: "Excellent Cruising Efficiency: ",
+            text: "Cruising efficiency reaches 1.5 - 2.5 kWh/km, highly adapted to various hull designs."
+          },
+          {
+            bold: "International Safety Certifications: ",
+            text: "Fully compliant with CE, REACH, RoHS standards for long-term safe operation."
+          }
+        ],
+        ctaBtnText: "View Technical Specifications & Datasheet ➔",
       },
       {
-        bold: "Excellent Cruising Efficiency: ",
-        text: "Cruising efficiency reaches 1.5 - 2.5 kWh/km, highly adapted to various hull designs."
-      },
-      {
-        bold: "International Safety Certifications: ",
-        text: "Fully compliant with CE, REACH, RoHS standards for long-term safe operation."
+        id: "60kwh",
+        badge: "SUPER ISLAND SERIES",
+        title: "SUPER ISLAND 60kWh Marine Power Battery Pack",
+        model: "MODEL: SUPER ISLAND 60kWh",
+        mainCardTitle: "60kWh Lightweight Marine Power Battery Pack",
+        overlayBadge: "🔍 Click for Gallery | 🛡️ ISO9001 Certified",
+        specs: [
+          { val: "60 kWh", label: "Nominal Capacity" },
+          { val: "40 L", label: "Gasoline Equivalent" },
+          { val: "80,000 L", label: "Lifetime Fuel Saved" },
+          { val: "1.2 - 2.0", label: "Efficiency (kWh/km)" },
+        ],
+        features: [
+          {
+            bold: "Lightweight High-Density Design: ",
+            text: "Pack weight only 355kg with energy density up to 168 Wh/kg, reducing vessel payload."
+          },
+          {
+            bold: "Flexible Parallel Expansion: ",
+            text: "Supports multi-pack parallel expansion, perfectly suited for medium & small speedboats."
+          },
+          {
+            bold: "316L Stainless Steel Protection: ",
+            text: "Constructed with 316L anti-corrosion stainless steel casing & powder coating, IP67 grade."
+          }
+        ],
+        ctaBtnText: "View Technical Specifications & Datasheet ➔",
       }
-    ],
-    ctaBtnText: "View Technical Specifications & Datasheet ➔",
+    ]
   },
   advantages: {
     badge: "CORE ADVANTAGES",
@@ -213,34 +250,71 @@ export const siteDataZh = {
     ],
   },
 
+  // 3. 船舶锂电/旗舰产品板块 (中文)
   products: {
     badge: "SUPER ISLAND SERIES",
-    title: "SUPER ISLAND 90kWh 船用动力电池包",
-    subTitle: "高效·低碳·强劲动力，专为电驱动游艇与商业船舶打造的 90kWh 旗舰电池系统",
-    model: "MODEL: SUPER ISLAND 90kWh",
-    mainCardTitle: "90kWh 高效船用动力电池包",
-    overlayBadge: "🔍 点击放大画廊 | 🛡️ ISO9001 认证",
-    specs: [
-      { val: "90 kWh", label: "电池标称容量" },
-      { val: "60 L", label: "等效汽油能量" },
-      { val: "120,000 L", label: "终身节省燃油" },
-      { val: "1.5 - 2.5", label: "航行能效 (kWh/km)" },
-    ],
-    features: [
+    title: "SUPER ISLAND 船用动力电池包系列",
+    subTitle: "高效·低碳·强劲动力，专为电驱动游艇与商业船舶打造的旗舰电池系统",
+    list: [
       {
-        bold: "极致减碳与省油效益：",
-        text: "单包具备 60L 汽油等效能量，全生命周期可累计节省约 12 万升汽油消耗。"
+        id: "90kwh",
+        badge: "SUPER ISLAND SERIES",
+        title: "SUPER ISLAND 90kWh 船用动力电池包",
+        model: "MODEL: SUPER ISLAND 90kWh",
+        mainCardTitle: "90kWh 高效船用动力电池包",
+        overlayBadge: "🔍 点击放大画廊 | 🛡️ ISO9001 认证",
+        specs: [
+          { val: "90 kWh", label: "电池标称容量" },
+          { val: "60 L", label: "等效汽油能量" },
+          { val: "120,000 L", label: "终身节省燃油" },
+          { val: "1.5 - 2.5", label: "航行能效 (kWh/km)" },
+        ],
+        features: [
+          {
+            bold: "极致减碳与省油效益：",
+            text: "单包具备 60L 汽油等效能量，全生命周期可累计节省约 12 万升汽油消耗。"
+          },
+          {
+            bold: "卓越巡航能效：",
+            text: "巡航能效达 1.5 ~ 2.5 kWh/km，高度适配各类船体设计与水域运行环境。"
+          },
+          {
+            bold: "国际合规安全认证：",
+            text: "全面符合 CE、REACH、RoHS 等国际环保与高压安全标准，保障系统长久稳定运行。"
+          }
+        ],
+        ctaBtnText: "查看产品详细参数规格表 ➔",
       },
       {
-        bold: "卓越巡航能效：",
-        text: "巡航能效达 1.5 ~ 2.5 kWh/km，高度适配各类船体设计与水域运行环境。"
-      },
-      {
-        bold: "国际合规安全认证：",
-        text: "全面符合 CE、REACH、RoHS 等国际环保与高压安全标准，保障系统长久稳定运行。"
+        id: "60kwh",
+        badge: "SUPER ISLAND SERIES",
+        title: "SUPER ISLAND 60kWh 船用动力电池包",
+        model: "MODEL: SUPER ISLAND 60kWh",
+        mainCardTitle: "60kWh 轻量级船用动力电池包",
+        overlayBadge: "🔍 点击放大画廊 | 🛡️ ISO9001 认证",
+        specs: [
+          { val: "60 kWh", label: "电池标称容量" },
+          { val: "40 L", label: "等效汽油能量" },
+          { val: "80,000 L", label: "终身节省燃油" },
+          { val: "1.2 - 2.0", label: "航行能效 (kWh/km)" },
+        ],
+        features: [
+          {
+            bold: "轻量化高密设计：",
+            text: "整包重量仅 355kg，能量密度高达 168 Wh/kg，显著降低船体载重负担。"
+          },
+          {
+            bold: "灵活并联拓展：",
+            text: "支持多包轻松并联扩容，完美适配中小型电动快艇与巡逻船只动力需求。"
+          },
+          {
+            bold: "316L 不锈钢强效防护：",
+            text: "采用 316L 高阶防腐不锈钢箱体与电泳喷塑工艺，IP67 级全面抵御海浪侵蚀。"
+          }
+        ],
+        ctaBtnText: "查看产品详细参数规格表 ➔",
       }
-    ],
-    ctaBtnText: "查看产品详细参数规格表 ➔",
+    ]
   },
 
   advantages: {

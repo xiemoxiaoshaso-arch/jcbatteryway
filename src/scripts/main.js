@@ -98,14 +98,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 2.3 绑定产品中心小轮播图 (.product-slide)
+  // 2.3 绑定产品中心小轮播图 (.product-slide) - 按卡片精准作用域绑定
   const pSlides = document.querySelectorAll('.product-slide');
-  pSlides.forEach((slide, idx) => {
+  pSlides.forEach((slide) => {
     slide.addEventListener('click', (e) => {
       if (e.target.closest('.p-arrow') || e.target.closest('.p-slider-dots')) return;
 
-      const list = Array.from(pSlides).map(s => s.getAttribute('data-full')).filter(Boolean);
-      openGalleryModal(list, idx);
+      // 获取当前产品卡片内部的所有产品图片
+      const parentCard = slide.closest('.product-card-slide') || document;
+      const cardSlides = parentCard.querySelectorAll('.product-slide');
+      const list = Array.from(cardSlides.length > 0 ? cardSlides : pSlides).map(s => s.getAttribute('data-full')).filter(Boolean);
+      const activeIdx = Array.from(cardSlides).indexOf(slide);
+
+      openGalleryModal(list, activeIdx >= 0 ? activeIdx : 0);
     });
   });
 
@@ -189,8 +194,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ====================================================
-  // 5. 产品中心小轮播逻辑
+  // 5. 产品中心小轮播逻辑与多产品卡片外层切换
   // ====================================================
+  // 5.1 多产品外层大卡片轮播 (90kWh / 60kWh 切换)
+  const productCardSlides = document.querySelectorAll('.product-card-slide');
+  const productTabs = document.querySelectorAll('.product-tab-btn');
+  const productPrevBtn = document.getElementById('product-prev-btn');
+  const productNextBtn = document.getElementById('product-next-btn');
+  let currentProdIdx = 0;
+
+  function switchProduct(index) {
+    if (productCardSlides.length === 0) return;
+    productCardSlides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+    productTabs.forEach((tab, i) => tab.classList.toggle('active', i === index));
+    currentProdIdx = index;
+  }
+
+  productNextBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    switchProduct((currentProdIdx + 1) % productCardSlides.length);
+  });
+
+  productPrevBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    switchProduct((currentProdIdx - 1 + productCardSlides.length) % productCardSlides.length);
+  });
+
+  productTabs.forEach((tab, i) => {
+    tab.addEventListener('click', (e) => {
+      e.stopPropagation();
+      switchProduct(i);
+    });
+  });
+
+  // 5.2 产品卡片内部图片小轮播支持
   const pDots = document.querySelectorAll('.p-dot');
   const pPrevBtn = document.getElementById('p-prev-slide');
   const pNextBtn = document.getElementById('p-next-slide');
@@ -302,7 +339,9 @@ document.addEventListener('DOMContentLoaded', () => {
     setLanguage(currentIsZh ? 'en' : 'zh');
   });
 
+  // ====================================================
   // 8. 参数规格表弹窗逻辑
+  // ====================================================
   const specsModal = document.getElementById('specs-modal');
   const closeSpecsModal = document.getElementById('close-specs-modal');
   const triggerSpecsBtns = document.querySelectorAll('.trigger-specs-modal');
@@ -318,7 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
     specsModal?.classList.remove('open');
   });
 
-  // 点击参数表底部的“索取报价”按钮时，关闭参数表并打开报价表单
+  // 点击参数表顶部的“索取报价”按钮时，关闭参数表并打开报价表单
   specsToQuoteBtn?.addEventListener('click', () => {
     specsModal?.classList.remove('open');
     quoteModal?.classList.add('open');

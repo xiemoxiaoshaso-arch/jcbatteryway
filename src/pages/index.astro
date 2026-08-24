@@ -271,6 +271,7 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
       </section>
 
       <!-- Section 3: 船舶锂电 -->
+      <!-- Section 3: 船舶锂电 (多产品外层轮播) -->
       <section id="products" class="section bg-light">
         <div class="section-inner">
           <span class="pill-badge-center">
@@ -286,83 +287,117 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
             <span class="lang-zh">{siteDataZh.products.subTitle}</span>
           </p>
 
-          <div class="product-showcase-card">
-            <div class="product-image-box" id="product-slider">
-              <div class="product-slides">
-                <div class="product-slide active" data-full={hero1.src}>
-                  <img src={hero1.src} alt="电动游艇实拍" />
-                </div>
-                <div class="product-slide" data-full={hero2.src}>
-                  <img src={hero2.src} alt="电动船动力系统" />
-                </div>
-                <div class="product-slide" data-full={hero3.src}>
-                  <img src={hero3.src} alt="电池测试" />
-                </div>
-              </div>
+          <!-- 外层多产品轮播容器 -->
+          <div class="product-card-carousel-wrapper">
+            <!-- 左右产品切换大按钮 -->
+            <button class="product-nav-arrow product-nav-prev" id="product-prev-btn">‹</button>
+            <button class="product-nav-arrow product-nav-next" id="product-next-btn">›</button>
 
-              <div class="image-overlay-badge">
-                <span class="lang-en">{siteDataEn.products.overlayBadge}</span>
-                <span class="lang-zh">{siteDataZh.products.overlayBadge}</span>
-              </div>
+            <div class="product-card-slides">
+              {siteDataEn.products.list.map((prodEn, prodIdx) => {
+                const prodZh = siteDataZh.products.list[prodIdx];
+                return (
+                  <div class={`product-card-slide ${prodIdx === 0 ? 'active' : ''}`} data-product-index={prodIdx}>
+                    <div class="product-showcase-card">
+                      <!-- 左侧：产品图片小轮播 -->
+                      <div class="product-image-box product-slider-box">
+                        <div class="product-slides">
+                          <div class="product-slide active" data-full={hero1.src}>
+                            <img src={hero1.src} alt="电动游艇实拍" />
+                          </div>
+                          <div class="product-slide" data-full={hero2.src}>
+                            <img src={hero2.src} alt="电动船动力系统" />
+                          </div>
+                          <div class="product-slide" data-full={hero3.src}>
+                            <img src={hero3.src} alt="电池测试" />
+                          </div>
+                        </div>
 
-              <button class="p-arrow p-arrow-left" id="p-prev-slide">‹</button>
-              <button class="p-arrow p-arrow-right" id="p-next-slide">›</button>
+                        <div class="image-overlay-badge">
+                          <span class="lang-en">{prodEn.overlayBadge}</span>
+                          <span class="lang-zh">{prodZh.overlayBadge}</span>
+                        </div>
 
-              <div class="p-slider-dots">
-                <span class="p-dot active" data-pindex="0"></span>
-                <span class="p-dot" data-pindex="1"></span>
-                <span class="p-dot" data-pindex="2"></span>
-              </div>
+                        <button class="p-arrow p-arrow-left">‹</button>
+                        <button class="p-arrow p-arrow-right">›</button>
+
+                        <div class="p-slider-dots">
+                          <span class="p-dot active" data-pindex="0"></span>
+                          <span class="p-dot" data-pindex="1"></span>
+                          <span class="p-dot" data-pindex="2"></span>
+                        </div>
+                      </div>
+
+                      <!-- 右侧：产品参数与卖点 -->
+                      <div class="product-info-box">
+                        <div class="product-header">
+                          <span class="product-model">
+                            <span class="lang-en">{prodEn.model}</span>
+                            <span class="lang-zh">{prodZh.model}</span>
+                          </span>
+                          <h3>
+                            <span class="lang-en">{prodEn.mainCardTitle}</span>
+                            <span class="lang-zh">{prodZh.mainCardTitle}</span>
+                          </h3>
+                        </div>
+
+                        <div class="product-specs-grid">
+                          {prodEn.specs.map((spec, sIdx) => (
+                            <div class="spec-item">
+                              <span class="spec-val">{spec.val}</span>
+                              <span class="spec-label">
+                                <span class="lang-en">{spec.label}</span>
+                                <span class="lang-zh">{prodZh.specs[sIdx].label}</span>
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+
+                        <ul class="product-features">
+                          {prodEn.features.map((fEn, fIdx) => {
+                            const fZh = prodZh.features[fIdx];
+                            return (
+                              <li>
+                                <span class="check-badge">✓</span>
+                                <div>
+                                  <strong>
+                                    <span class="lang-en">{fEn.bold}</span>
+                                    <span class="lang-zh">{fZh.bold}</span>
+                                  </strong>
+                                  <span>
+                                    <span class="lang-en">{fEn.text}</span>
+                                    <span class="lang-zh">{fZh.text}</span>
+                                  </span>
+                                </div>
+                              </li>
+                            );
+                          })}
+                        </ul>
+
+                        <div class="product-actions">
+                          <button class="btn btn-green trigger-specs-modal">
+                            <span class="lang-en">{prodEn.ctaBtnText}</span>
+                            <span class="lang-zh">{prodZh.ctaBtnText}</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
-            <div class="product-info-box">
-              <!-- <div class="product-header">
-                <span class="product-model">
-                  <span class="lang-en">{siteDataEn.products.model}</span>
-                  <span class="lang-zh">{siteDataZh.products.model}</span>
-                </span>
-                <h3>
-                  <span class="lang-en">{siteDataEn.products.mainCardTitle}</span>
-                  <span class="lang-zh">{siteDataZh.products.mainCardTitle}</span>
-                </h3>
-              </div>-->
-
-              <div class="product-specs-grid">
-                {siteDataEn.products.specs.map((spec, idx) => (
-                  <div class="spec-item">
-                    <span class="spec-val">{spec.val}</span>
-                    <span class="spec-label">
-                      <span class="lang-en">{spec.label}</span>
-                      <span class="lang-zh">{siteDataZh.products.specs[idx].label}</span>
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-              <ul class="product-features">
-                {siteDataEn.products.features.map((item, idx) => (
-                  <li>
-                    <span class="check-badge">✓</span>
-                    <div>
-                      <strong>
-                        <span class="lang-en">{item.bold}</span>
-                        <span class="lang-zh">{siteDataZh.products.features[idx].bold}</span>
-                      </strong>
-                      <span>
-                        <span class="lang-en">{item.text}</span>
-                        <span class="lang-zh">{siteDataZh.products.features[idx].text}</span>
-                      </span>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-
-              <div class="product-actions">
-                <button class="btn btn-green trigger-specs-modal">
-                  <span class="lang-en">{siteDataEn.products.ctaBtnText}</span>
-                  <span class="lang-zh">{siteDataZh.products.ctaBtnText}</span>
-                </button>
-              </div>
+            <!-- 底部产品切换 Tabs 按钮 -->
+            <div class="product-carousel-tabs">
+              {siteDataEn.products.list.map((prodEn, prodIdx) => {
+                const prodZh = siteDataZh.products.list[prodIdx];
+                return (
+                  <button class={`product-tab-btn ${prodIdx === 0 ? 'active' : ''}`} data-tab-index={prodIdx}>
+                    <span class="lang-en">{prodEn.model}</span>
+                    <span class="lang-zh">{prodZh.model}</span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
