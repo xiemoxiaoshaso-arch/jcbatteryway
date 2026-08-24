@@ -311,90 +311,95 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
                 const prodZh = siteDataZh.products.list[prodIdx];
                 return (
                   <div class={`product-card-slide ${prodIdx === 0 ? 'active' : ''}`} data-product-index={prodIdx}>
-                    <div class="product-showcase-card">
-                      <!-- 左侧：产品图片小轮播 -->
-                      <div class="product-image-box product-slider-box">
-                        <div class="product-slides">
-                          <div class="product-slide active" data-full={hero1.src}>
-                            <img src={hero1.src} alt="电动游艇实拍" />
-                          </div>
-                          <div class="product-slide" data-full={hero2.src}>
-                            <img src={hero2.src} alt="电动船动力系统" />
-                          </div>
-                          <div class="product-slide" data-full={hero3.src}>
-                            <img src={hero3.src} alt="电池测试" />
-                          </div>
-                        </div>
-
-                        <div class="image-overlay-badge">
-                          <span class="lang-en">{prodEn.overlayBadge}</span>
-                          <span class="lang-zh">{prodZh.overlayBadge}</span>
-                        </div>
-
-                        <button class="p-arrow p-arrow-left">‹</button>
-                        <button class="p-arrow p-arrow-right">›</button>
-
-                        <div class="p-slider-dots">
-                          <span class="p-dot active" data-pindex="0"></span>
-                          <span class="p-dot" data-pindex="1"></span>
-                          <span class="p-dot" data-pindex="2"></span>
-                        </div>
-                      </div>
-
-                      <!-- 右侧：产品参数与卖点 -->
-                      <div class="product-info-box">
-                        <div class="product-header">
-                          <span class="product-model">
-                            <span class="lang-en">{prodEn.model}</span>
-                            <span class="lang-zh">{prodZh.model}</span>
-                          </span>
-                          <h3>
+                      <div class="product-showcase-card">
+                        <!-- 1. 全宽绿色顶部标题栏 (全新位置：带绿色背景) -->
+                        <div class="product-card-top-header">
+                          <h3 class="product-top-title">
                             <span class="lang-en">{prodEn.mainCardTitle}</span>
                             <span class="lang-zh">{prodZh.mainCardTitle}</span>
                           </h3>
+                          <span class="product-top-model">
+                            <span class="lang-en">{prodEn.model}</span>
+                            <span class="lang-zh">{prodZh.model}</span>
+                          </span>
                         </div>
 
-                        <div class="product-specs-grid">
-                          {prodEn.specs.map((spec, sIdx) => (
-                            <div class="spec-item">
-                              <span class="spec-val">{spec.val}</span>
-                              <span class="spec-label">
-                                <span class="lang-en">{spec.label}</span>
-                                <span class="lang-zh">{prodZh.specs[sIdx].label}</span>
-                              </span>
+                        <!-- 2. 下方两列主体内容 -->
+                        <div class="product-card-body">
+                          <!-- 左侧：产品图片轮播 -->
+                          <div class="product-image-box product-slider-box">
+                            <div class="product-slides">
+                              <div class="product-slide active" data-full={hero1.src}>
+                                <img src={hero1.src} alt="电动游艇实拍" />
+                              </div>
+                              <div class="product-slide" data-full={hero2.src}>
+                                <img src={hero2.src} alt="电动船动力系统" />
+                              </div>
+                              <div class="product-slide" data-full={hero3.src}>
+                                <img src={hero3.src} alt="电池测试" />
+                              </div>
                             </div>
-                          ))}
-                        </div>
 
-                        <ul class="product-features">
-                          {prodEn.features.map((fEn, fIdx) => {
-                            const fZh = prodZh.features[fIdx];
-                            return (
-                              <li>
-                                <span class="check-badge">✓</span>
-                                <div>
-                                  <strong>
-                                    <span class="lang-en">{fEn.bold}</span>
-                                    <span class="lang-zh">{fZh.bold}</span>
-                                  </strong>
-                                  <span>
-                                    <span class="lang-en">{fEn.text}</span>
-                                    <span class="lang-zh">{fZh.text}</span>
+                            <div class="image-overlay-badge">
+                              <span class="lang-en">{prodEn.overlayBadge}</span>
+                              <span class="lang-zh">{prodZh.overlayBadge}</span>
+                            </div>
+
+                            <button class="p-arrow p-arrow-left">‹</button>
+                            <button class="p-arrow p-arrow-right">›</button>
+
+                            <div class="p-slider-dots">
+                              <span class="p-dot active" data-pindex="0"></span>
+                              <span class="p-dot" data-pindex="1"></span>
+                              <span class="p-dot" data-pindex="2"></span>
+                            </div>
+                          </div>
+
+                          <!-- 右侧：真实参数与卖点 (已移除原有标题) -->
+                          <div class="product-info-box">
+                            <div class="product-specs-grid">
+                              {prodEn.specs.map((spec, sIdx) => (
+                                <div class="spec-item">
+                                  <span class="spec-val">{spec.val}</span>
+                                  <span class="spec-label">
+                                    <span class="lang-en">{spec.label}</span>
+                                    <span class="lang-zh">{prodZh.specs[sIdx].label}</span>
                                   </span>
                                 </div>
-                              </li>
-                            );
-                          })}
-                        </ul>
+                              ))}
+                            </div>
 
-                        <div class="product-actions">
-                          <button class="btn btn-green trigger-specs-modal">
-                            <span class="lang-en">{prodEn.ctaBtnText}</span>
-                            <span class="lang-zh">{prodZh.ctaBtnText}</span>
-                          </button>
+                            <ul class="product-features">
+                              {prodEn.features.map((fEn, fIdx) => {
+                                const fZh = prodZh.features[fIdx];
+                                return (
+                                  <li>
+                                    <span class="check-badge">✓</span>
+                                    <div>
+                                      <strong>
+                                        <span class="lang-en">{fEn.bold}</span>
+                                        <span class="lang-zh">{fZh.bold}</span>
+                                      </strong>
+                                      <span>
+                                        <span class="lang-en">{fEn.text}</span>
+                                        <span class="lang-zh">{fZh.text}</span>
+                                      </span>
+                                    </div>
+                                  </li>
+                                );
+                              })}
+                            </ul>
+
+                            <div class="product-actions">
+                              <button class="btn btn-green trigger-specs-modal">
+                                <span class="lang-en">{prodEn.ctaBtnText}</span>
+                                <span class="lang-zh">{prodZh.ctaBtnText}</span>
+                              </button>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
+                      </div>  
+                        
                   </div>
                 );
               })}
