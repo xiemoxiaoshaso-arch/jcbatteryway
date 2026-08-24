@@ -229,23 +229,35 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
                 {siteDataZh.about.paragraphs.map(p => <p>{p}</p>)}
               </div>
             </div>
-            <!-- 工厂实景宣传视频展示区 -->
-            <div class="factory-video-section">
-              <div class="video-player-box">
-                <video 
-                  id="factory-promo-video" 
-                  controls 
-                  preload="metadata" 
-                  poster="/video-poster.jpg"
-                >
-                  <source src="/factory-video.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                <div class="video-overlay-tag">
-                  <span>🎬 <span class="lang-en">Factory Tour Video</span><span class="lang-zh">企业工厂实拍宣传片</span></span>
+            <!-- 工厂实景宣传视频展示区 (带高质感封面与 ▶ 播放按钮) -->
+          <div class="factory-video-section">
+            <div class="video-player-box" id="video-wrapper">
+              <video 
+                id="factory-promo-video" 
+                controls 
+                preload="metadata" 
+                poster="/video-poster.jpg"
+              >
+                <source src="/factory-video.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+
+              <!-- 封面中央 ▶ 播放按钮 (点击开始播放) -->
+              <div class="video-play-trigger" id="custom-video-play-btn">
+                <div class="play-btn-circle">
+                  <span class="play-icon">▶</span>
                 </div>
+                <span class="play-btn-text">
+                  <span class="lang-en">Watch Factory Tour</span>
+                  <span class="lang-zh">播放工厂实拍宣传片</span>
+                </span>
+              </div>
+
+              <div class="video-overlay-tag">
+                <span>🎬 <span class="lang-en">Factory Tour Video</span><span class="lang-zh">企业工厂实拍宣传片</span></span>
               </div>
             </div>
+          </div>
           </div>
           <!-- 硬件实力展示 (升级为 4 个独立小轮播卡片) -->
           <div class="factory-showcase">

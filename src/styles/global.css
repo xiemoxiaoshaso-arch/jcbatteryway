@@ -2093,8 +2093,9 @@ body.lang-zh .lang-en {
   .product-nav-next { right: -10px; }
 }
 
+
 /* ----------------------------------------------------
-   工厂实拍宣传视频播放器（精准锁定 1280*760 原始比例）
+   工厂宣传片高质感封面与居中 ▶ 播放按钮
 ---------------------------------------------------- */
 .factory-video-section {
   margin-top: 2.5rem;
@@ -2105,7 +2106,7 @@ body.lang-zh .lang-en {
 .video-player-box {
   position: relative;
   width: 100%;
-  aspect-ratio: 1280 / 760;            /* 关键：精确锁定 1280*760 原始比例，高度自动按比例缩放 */
+  aspect-ratio: 16 / 9;               /* 锁定 16:9 标准宽屏 */
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.15);
@@ -2116,24 +2117,65 @@ body.lang-zh .lang-en {
 .video-player-box video {
   width: 100%;
   height: 100%;
-  object-fit: contain;                 /* 保持视频完整不裁切 */
+  object-fit: cover;                  /* 100% 铺满无黑边 */
   display: block;
   outline: none;
 }
 
-/* 视频左上角半透明标签 */
-.video-overlay-tag {
+/* 封面居中 ▶ 播放按钮 */
+.video-play-trigger {
   position: absolute;
-  top: 16px;
-  left: 16px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.play-btn-circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(0, 184, 98, 0.9);
+  backdrop-filter: blur(8px);
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 8px rgba(0, 184, 98, 0.25), 0 10px 25px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.play-icon {
+  font-size: 1.8rem;
+  margin-left: 4px;                   /* 微调三角居中视觉 */
+}
+
+.play-btn-text {
   background: rgba(15, 23, 42, 0.75);
   backdrop-filter: blur(8px);
   color: #ffffff;
-  padding: 0.4rem 0.9rem;
+  padding: 0.4rem 1rem;
   border-radius: 20px;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 700;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  pointer-events: none;                /* 不挡住视频控制条 */
-  z-index: 10;
+}
+
+.video-play-trigger:hover .play-btn-circle {
+  transform: scale(1.12);
+  background: #00b862;
+  box-shadow: 0 0 0 12px rgba(0, 184, 98, 0.35), 0 15px 30px rgba(0, 184, 98, 0.4);
+}
+
+/* 当视频开始播放后，隐藏中央播放按钮 */
+.video-player-box.playing .video-play-trigger {
+  opacity: 0;
+  pointer-events: none;
 }
