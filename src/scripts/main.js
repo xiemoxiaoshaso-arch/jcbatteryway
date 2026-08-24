@@ -227,33 +227,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5.2 产品卡片内部图片小轮播支持
-  const pDots = document.querySelectorAll('.p-dot');
-  const pPrevBtn = document.getElementById('p-prev-slide');
-  const pNextBtn = document.getElementById('p-next-slide');
-  let pIndex = 0;
+  // 5.2 修正关键点：为每个产品卡片内部的图片轮播框（.product-slider-box）绑定独立的箭头与指示点
+  document.querySelectorAll('.product-slider-box').forEach((sliderBox) => {
+    const cardSlides = sliderBox.querySelectorAll('.product-slide');
+    const cardDots = sliderBox.querySelectorAll('.p-dot');
+    const cardPrevBtn = sliderBox.querySelector('.p-arrow-left');
+    const cardNextBtn = sliderBox.querySelector('.p-arrow-right');
+    let cardPIndex = 0;
 
-  function showPSlide(index) {
-    if (pSlides.length === 0) return;
-    pSlides.forEach((slide, i) => slide.classList.toggle('active', i === index));
-    pDots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-    pIndex = index;
-  }
+    function showCardPSlide(index) {
+      if (cardSlides.length <= 1) return;
+      cardSlides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+      cardDots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+      cardPIndex = index;
+    }
 
-  pNextBtn?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    showPSlide((pIndex + 1) % pSlides.length);
-  });
+    cardNextBtn?.addEventListener('click', (e) => {
+      e.stopPropagation(); // 阻止冒泡避免触发全屏放大弹窗
+      showCardPSlide((cardPIndex + 1) % cardSlides.length);
+    });
 
-  pPrevBtn?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    showPSlide((pIndex - 1 + pSlides.length) % pSlides.length);
-  });
-
-  pDots.forEach((dot, i) => {
-    dot.addEventListener('click', (e) => {
+    cardPrevBtn?.addEventListener('click', (e) => {
       e.stopPropagation();
-      showPSlide(i);
+      showCardPSlide((cardPIndex - 1 + cardSlides.length) % cardSlides.length);
+    });
+
+    cardDots.forEach((dot, i) => {
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showCardPSlide(i);
+      });
     });
   });
 
