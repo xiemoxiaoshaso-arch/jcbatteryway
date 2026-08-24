@@ -229,16 +229,22 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
                 {siteDataZh.about.paragraphs.map(p => <p>{p}</p>)}
               </div>
             </div>
-            <div class="stats-grid">
-              {siteDataEn.about.stats.map((stat, idx) => (
-                <div class="stat-card">
-                  <span class="stat-num">{stat.num}</span>
-                  <span class="stat-label">
-                    <span class="lang-en">{stat.label}</span>
-                    <span class="lang-zh">{siteDataZh.about.stats[idx].label}</span>
-                  </span>
+            <!-- 工厂实景宣传视频展示区 -->
+            <div class="factory-video-section">
+              <div class="video-player-box">
+                <video 
+                  id="factory-promo-video" 
+                  controls 
+                  preload="metadata" 
+                  poster="/video-poster.jpg"
+                >
+                  <source src="/factory-video.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                <div class="video-overlay-tag">
+                  <span>🎬 <span class="lang-en">Factory Tour Video</span><span class="lang-zh">企业工厂实拍宣传片</span></span>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
           <!-- 硬件实力展示 (升级为 4 个独立小轮播卡片) -->

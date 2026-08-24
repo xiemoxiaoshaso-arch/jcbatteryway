@@ -2092,3 +2092,56 @@ body.lang-zh .lang-en {
   .product-nav-prev { left: -10px; }
   .product-nav-next { right: -10px; }
 }
+
+/* ----------------------------------------------------
+   工厂实拍宣传视频播放器样式
+---------------------------------------------------- */
+.factory-video-section {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  width: 100%;
+}
+
+.video-player-box {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  height: 480px;                       /* 视频框高度 */
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.15);
+  border: 2px solid #ffffff;
+  background-color: #0f172a;           /* 视频加载前的深色底 */
+}
+
+.video-player-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                   /* 视频铺满容器 */
+  display: block;
+  outline: none;
+}
+
+/* 视频左上角半透明标签 */
+.video-overlay-tag {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 0.4rem 0.9rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  pointer-events: none;                /* 不挡住视频播放控制条 */
+  z-index: 10;
+}
+
+/* 移动端高度自适应 */
+@media (max-width: 768px) {
+  .video-player-box {
+    height: 240px;
+  }
+}
