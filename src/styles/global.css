@@ -1846,3 +1846,49 @@ body.lang-zh .lang-en {
   .specs-card { padding: 1.5rem 1rem; }
   .specs-table th, .specs-table td { padding: 0.6rem 0.7rem; font-size: 0.8rem; }
 }
+
+/* 参数规格表头部与按钮右置排版 */
+.specs-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding-right: 45px; /* 避开右上角的 ✕ 关闭按钮 */
+}
+
+.specs-title-box h2 {
+  text-align: left;
+  font-size: 1.5rem;
+  color: #0f172a;
+  font-weight: 800;
+  margin: 0 0 0.3rem 0;
+}
+
+.specs-title-box p {
+  color: #64748b;
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+/* 标题右侧的报价按钮 */
+#specs-to-quote-btn {
+  padding: 0.6rem 1.2rem;
+  font-size: 0.88rem;
+  white-space: nowrap;
+  flex-shrink: 0;      /* 防止按钮被挤压 */
+  border-radius: 10px;
+}
+
+/* 移动端自适应 */
+@media (max-width: 768px) {
+  .specs-header-top {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 0;
+  }
+  #specs-to-quote-btn {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+}

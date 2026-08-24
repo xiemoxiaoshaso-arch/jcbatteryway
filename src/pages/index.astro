@@ -693,19 +693,31 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
       </div>
     </div>
 
-    <!-- 9. 详细参数规格表弹窗 (对照 Excel 图片精细还原) -->
+    <!-- 9. 详细参数规格表弹窗 -->
     <div id="specs-modal" class="specs-modal">
       <div class="specs-card">
         <button id="close-specs-modal" class="specs-close-btn">✕</button>
+        
         <div class="specs-header">
-          <h2>
-            <span class="lang-en">{siteDataEn.specsModal.title}</span>
-            <span class="lang-zh">{siteDataZh.specsModal.title}</span>
-          </h2>
-          <p>
-            <span class="lang-en">{siteDataEn.specsModal.subTitle}</span>
-            <span class="lang-zh">{siteDataZh.specsModal.subTitle}</span>
-          </p>
+          <!-- 标题与右侧按钮容器 -->
+          <div class="specs-header-top">
+            <div class="specs-title-box">
+              <h2>
+                <span class="lang-en">{siteDataEn.specsModal.title}</span>
+                <span class="lang-zh">{siteDataZh.specsModal.title}</span>
+              </h2>
+              <p>
+                <span class="lang-en">{siteDataEn.specsModal.subTitle}</span>
+                <span class="lang-zh">{siteDataZh.specsModal.subTitle}</span>
+              </p>
+            </div>
+
+            <!-- 将报价按钮移至标题右侧 -->
+            <button class="btn btn-green trigger-quote-modal" id="specs-to-quote-btn">
+              <span class="lang-en">{siteDataEn.specsModal.inquireBtnText}</span>
+              <span class="lang-zh">{siteDataZh.specsModal.inquireBtnText}</span>
+            </button>
+          </div>
         </div>
 
         <!-- 详细参数对比表 -->
@@ -739,17 +751,9 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
             </tbody>
           </table>
         </div>
-
-        <!-- 表格底部引导报价按钮 -->
-        <div class="specs-footer-actions">
-          <button class="btn btn-green trigger-quote-modal" id="specs-to-quote-btn">
-            <span class="lang-en">{siteDataEn.specsModal.inquireBtnText}</span>
-            <span class="lang-zh">{siteDataZh.specsModal.inquireBtnText}</span>
-          </button>
-        </div>
       </div>
     </div>
-    
+
     <script src="../scripts/main.js"></script>
   </body>
 </html>
