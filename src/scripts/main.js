@@ -370,6 +370,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target === specsModal) specsModal.classList.remove('open');
   });
 
+  // 视频点击 ▶ 按钮开始播放控制
+  const videoWrapper = document.getElementById('video-wrapper');
+  const factoryVideo = document.getElementById('factory-promo-video');
+  const customPlayBtn = document.getElementById('custom-video-play-btn');
+
+  customPlayBtn?.addEventListener('click', () => {
+    if (factoryVideo) {
+      factoryVideo.play();
+      videoWrapper?.classList.add('playing');
+    }
+  });
+
+  factoryVideo?.addEventListener('play', () => {
+    videoWrapper?.classList.add('playing');
+  });
+
+  factoryVideo?.addEventListener('pause', () => {
+    videoWrapper?.classList.remove('playing');
+  });
+
 
   // ====================================================
   // 9. 页面滚动更新侧边栏/顶部导航高亮
@@ -390,3 +410,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   sections.forEach((section) => observer.observe(section));
 });
+
