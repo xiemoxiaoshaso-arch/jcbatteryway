@@ -28,6 +28,28 @@ import hero1 from '../assets/images/cp_1.jpg';
 import hero2 from '../assets/images/cp_2.png';
 import hero3 from '../assets/images/cp_3.jpg';
 
+// 导入 Banner 背景大图与缩略图
+import heroBg1 from '../assets/images/hero-bg.png';
+import heroBg2 from '../assets/images/hero-bg2.png';
+import heroBg3 from '../assets/images/hero-bg3.png';
+
+import cpImg1 from '../assets/images/cp_img1.jpg';
+import cpImg2 from '../assets/images/cp_img2.jpg';
+import cpImg3 from '../assets/images/cp_img3.jpg';
+import cpImg4 from '../assets/images/cp_img4.jpg';
+import cpImg5 from '../assets/images/cp_img5.jpg';
+import cpImg6 from '../assets/images/cp_img6.jpg';
+import cpImg7 from '../assets/images/cp_img7.jpg';
+import cpImg8 from '../assets/images/cp_img8.jpg';
+import cpImg9 from '../assets/images/cp_img9.jpg';
+
+// 绑定 3 页 Banner 的图片与右下角缩略图资源
+const heroSlidesAssets = [
+  { bg: heroBg1, gallery: [cpImg1, cpImg2, cpImg3] },
+  { bg: heroBg2, gallery: [cpImg4, cpImg5, cpImg6] },
+  { bg: heroBg3, gallery: [cpImg7, cpImg8, cpImg9] },
+];
+
 // 👈 为 4 个分类各配置 3 张照片 (你可以将后面的图片换成你真实准备好的其他照片文件名)
 const workshopGalleries = [
   [workshop1, workshop101], // 1. 研发基地：3张照片
@@ -107,54 +129,45 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
     </aside>
 
     <main class="content">
-      <!-- Section 1: Hero 全屏轮播区域 (修复白屏 Bug：固定 3 个 Slide 容器，内部嵌入中英双语) -->
+      <!-- Section 1: Hero 全屏轮播区域 (直接读取 siteData.hero 变量) -->
       <section id="hero" class="section hero-section">
         <div class="slider-container">
-          {slidesEn.map((slideEn, index) => {
-            const slideZh = slidesZh[index] || slideEn; // 匹配同序号中文文案
+          {siteDataEn.hero.map((slideEn, index) => {
+            const slideZh = siteDataZh.hero[index];
+            const asset = heroSlidesAssets[index] || heroSlidesAssets[0];
             return (
-              <div 
-                class={`slide ${index === 0 ? 'active' : ''}`} 
-                data-index={index}
-              >
-                <!-- 共享背景图与蒙版 -->
-                <div 
-                  class="slide-bg" 
-                  style={`background-image: url('${slideEn.data.bgImage.src}');`}
-                ></div>
+              <div class={`slide ${index === 0 ? 'active' : ''}`} data-index={index}>
+                <!-- 背景图与蒙版 -->
+                <div class="slide-bg" style={`background-image: url('${asset.bg.src}');`}></div>
                 <div class="hero-mask"></div>
 
-                <!-- 1. 英文文案 -->
+                <!-- 英文文案 -->
                 <div class="hero-content lang-en">
-                  <span class={`pill-badge badge-${slideEn.data.badgeColor || 'emerald'}`}>
-                    {slideEn.data.badge}
-                  </span>
-                  <h1>{slideEn.data.title}<br/><span>{slideEn.data.subtitle}</span></h1>
-                  <p class="subtitle">{slideEn.data.description}</p>
+                  <span class={`pill-badge badge-${slideEn.badgeColor || 'emerald'}`}>{slideEn.badge}</span>
+                  <h1>{slideEn.title}<br/><span>{slideEn.subtitle}</span></h1>
+                  <p class="subtitle">{slideEn.description}</p>
                   <div class="hero-btns">
-                    <a href={slideEn.data.ctaLink1} class="btn btn-green">{slideEn.data.ctaText1}</a>
-                    <button class="btn btn-translucent trigger-quote-modal">{slideEn.data.ctaText2}</button>
+                    <a href={slideEn.ctaLink1} class="btn btn-green">{slideEn.ctaText1}</a>
+                    <button class="btn btn-translucent trigger-quote-modal">{slideEn.ctaText2}</button>
                   </div>
                 </div>
 
-                <!-- 2. 中文文案 -->
+                <!-- 中文文案 -->
                 <div class="hero-content lang-zh">
-                  <span class={`pill-badge badge-${slideZh.data.badgeColor || 'emerald'}`}>
-                    {slideZh.data.badge}
-                  </span>
-                  <h1>{slideZh.data.title}<br/><span>{slideZh.data.subtitle}</span></h1>
-                  <p class="subtitle">{slideZh.data.description}</p>
+                  <span class={`pill-badge badge-${slideZh.badgeColor || 'emerald'}`}>{slideZh.badge}</span>
+                  <h1>{slideZh.title}<br/><span>{slideZh.subtitle}</span></h1>
+                  <p class="subtitle">{slideZh.description}</p>
                   <div class="hero-btns">
-                    <a href={slideZh.data.ctaLink1} class="btn btn-green">{slideZh.data.ctaText1}</a>
-                    <button class="btn btn-translucent trigger-quote-modal">{slideZh.data.ctaText2}</button>
+                    <a href={slideZh.ctaLink1} class="btn btn-green">{slideZh.ctaText1}</a>
+                    <button class="btn btn-translucent trigger-quote-modal">{slideZh.ctaText2}</button>
                   </div>
                 </div>
 
                 <!-- 右下角缩略图 -->
                 <div class="hero-thumbnails">
-                  {slideEn.data.gallery.map((imgItem) => (
-                    <div class="thumb-card" data-full={imgItem.src}>
-                      <img src={imgItem.src} alt="展示产品图" />
+                  {asset.gallery.map((img) => (
+                    <div class="thumb-card" data-full={img.src}>
+                      <img src={img.src} alt="Thumb" />
                     </div>
                   ))}
                 </div>
@@ -167,7 +180,7 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
         <button class="slider-arrow arrow-right" id="next-slide">›</button>
 
         <div class="slider-dots">
-          {slidesEn.map((_, index) => (
+          {siteDataEn.hero.map((_, index) => (
             <span class={`slider-dot ${index === 0 ? 'active' : ''}`} data-index={index}></span>
           ))}
         </div>
