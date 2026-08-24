@@ -2179,3 +2179,112 @@ body.lang-zh .lang-en {
   opacity: 0;
   pointer-events: none;
 }
+
+/* ----------------------------------------------------
+   放大全屏播放按钮与视频弹窗 (Video Modal)
+---------------------------------------------------- */
+
+/* 右下角放大播放按钮 */
+.video-expand-btn {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 0.45rem 0.95rem;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.video-expand-btn:hover {
+  background: #00b862;
+  border-color: #00b862;
+  box-shadow: 0 4px 15px rgba(0, 184, 98, 0.4);
+  transform: translateY(-2px);
+}
+
+/* 全屏高清视频弹窗 */
+.video-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.92);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2600;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.video-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.video-modal-card {
+  position: relative;
+  max-width: 1100px;
+  width: 92%;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #000000;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  animation: modalUp 0.3s ease-out forwards;
+}
+
+.modal-video-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.modal-video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 弹窗关闭按钮 */
+.video-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  transition: all 0.2s ease;
+}
+
+.video-close-btn:hover {
+  background-color: #ef4444;
+  border-color: #ef4444;
+}
+
+@media (max-width: 768px) {
+  .video-modal-card { width: 96%; }
+}

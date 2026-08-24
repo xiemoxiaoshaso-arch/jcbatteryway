@@ -230,6 +230,7 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
               </div>
             </div>
             <!-- 工厂实景宣传视频展示区 (带高质感封面与 ▶ 播放按钮) -->
+            <!-- 工厂实景宣传视频展示区 (带放大全屏播放按钮) -->
             <div class="factory-video-section">
               <div class="video-player-box" id="video-wrapper">
                 <video 
@@ -239,10 +240,9 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
                   poster="/video-poster.jpg"
                 >
                   <source src="/factory-video.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
                 </video>
 
-                <!-- 封面中央 ▶ 播放按钮 (点击开始播放) -->
+                <!-- 封面居中 ▶ 播放按钮 -->
                 <div class="video-play-trigger" id="custom-video-play-btn">
                   <div class="play-btn-circle">
                     <span class="play-icon">▶</span>
@@ -253,8 +253,28 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
                   </span>
                 </div>
 
+                <!-- 左上角标签 -->
                 <div class="video-overlay-tag">
                   <span>🎬 <span class="lang-en">Factory Tour Video</span><span class="lang-zh">企业工厂实拍宣传片</span></span>
+                </div>
+
+                <!-- 右下角：放大全屏播放按钮 -->
+                <button class="video-expand-btn trigger-video-modal">
+                  <span>⛶ <span class="lang-en">Full Screen Pop-up</span><span class="lang-zh">放大全屏播放</span></span>
+                </button>
+              </div>
+            </div>
+
+            <!-- ... (其他内容) ... -->
+
+            <!-- 10. 全屏高清视频弹窗 (Video Modal) -->
+            <div id="video-modal" class="video-modal">
+              <div class="video-modal-card">
+                <button id="close-video-modal" class="video-close-btn">✕</button>
+                <div class="modal-video-wrapper">
+                  <video id="modal-factory-video" controls preload="metadata" poster="/video-poster.jpg">
+                    <source src="/factory-video.mp4" type="video/mp4" />
+                  </video>
                 </div>
               </div>
             </div>

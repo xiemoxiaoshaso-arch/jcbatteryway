@@ -390,7 +390,37 @@ document.addEventListener('DOMContentLoaded', () => {
     videoWrapper?.classList.remove('playing');
   });
 
+  // 全屏高清视频弹窗逻辑
+  const videoModal = document.getElementById('video-modal');
+  const closeVideoModal = document.getElementById('close-video-modal');
+  const modalVideo = document.getElementById('modal-factory-video');
+  const triggerVideoBtns = document.querySelectorAll('.trigger-video-modal');
 
+  triggerVideoBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      // 如果小播放器正在放，暂停它
+      if (factoryVideo && !factoryVideo.paused) {
+        factoryVideo.pause();
+      }
+      videoModal?.classList.add('open');
+      if (modalVideo) {
+        modalVideo.play(); // 弹窗打开后自动播放全屏视频
+      }
+    });
+  });
+
+  function closeFullVideoModal() {
+    videoModal?.classList.remove('open');
+    if (modalVideo) {
+      modalVideo.pause(); // 弹窗关闭时自动暂停视频
+    }
+  }
+
+  closeVideoModal?.addEventListener('click', closeFullVideoModal);
+  videoModal?.addEventListener('click', (e) => {
+    if (e.target === videoModal) closeFullVideoModal();
+  });
   // ====================================================
   // 9. 页面滚动更新侧边栏/顶部导航高亮
   // ====================================================
