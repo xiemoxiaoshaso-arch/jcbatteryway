@@ -358,7 +358,7 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
               </ul>
 
               <div class="product-actions">
-                <button class="btn btn-green trigger-quote-modal">
+                <button class="btn btn-green trigger-specs-modal">
                   <span class="lang-en">{siteDataEn.products.ctaBtnText}</span>
                   <span class="lang-zh">{siteDataZh.products.ctaBtnText}</span>
                 </button>
@@ -693,6 +693,63 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
       </div>
     </div>
 
+    <!-- 9. 详细参数规格表弹窗 (对照 Excel 图片精细还原) -->
+    <div id="specs-modal" class="specs-modal">
+      <div class="specs-card">
+        <button id="close-specs-modal" class="specs-close-btn">✕</button>
+        <div class="specs-header">
+          <h2>
+            <span class="lang-en">{siteDataEn.specsModal.title}</span>
+            <span class="lang-zh">{siteDataZh.specsModal.title}</span>
+          </h2>
+          <p>
+            <span class="lang-en">{siteDataEn.specsModal.subTitle}</span>
+            <span class="lang-zh">{siteDataZh.specsModal.subTitle}</span>
+          </p>
+        </div>
+
+        <!-- 详细参数对比表 -->
+        <div class="table-responsive">
+          <table class="specs-table">
+            <thead>
+              <tr>
+                {siteDataEn.specsModal.headers.map((hEn, idx) => (
+                  <th>
+                    <span class="lang-en">{hEn}</span>
+                    <span class="lang-zh">{siteDataZh.specsModal.headers[idx]}</span>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {siteDataEn.specsModal.rows.map((rowEn, idx) => {
+                const rowZh = siteDataZh.specsModal.rows[idx];
+                return (
+                  <tr>
+                    <td class="spec-item-title">
+                      <span class="lang-en">{rowEn.item}</span>
+                      <span class="lang-zh">{rowZh.item}</span>
+                    </td>
+                    <td>{rowEn.v60}</td>
+                    <td class="highlight-val">{rowEn.v90}</td>
+                    <td class="remark-val">{rowEn.remark}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 表格底部引导报价按钮 -->
+        <div class="specs-footer-actions">
+          <button class="btn btn-green trigger-quote-modal" id="specs-to-quote-btn">
+            <span class="lang-en">{siteDataEn.specsModal.inquireBtnText}</span>
+            <span class="lang-zh">{siteDataZh.specsModal.inquireBtnText}</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    
     <script src="../scripts/main.js"></script>
   </body>
 </html>

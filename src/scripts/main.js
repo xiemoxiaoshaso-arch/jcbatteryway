@@ -302,9 +302,35 @@ document.addEventListener('DOMContentLoaded', () => {
     setLanguage(currentIsZh ? 'en' : 'zh');
   });
 
+  // 8. 参数规格表弹窗逻辑
+  const specsModal = document.getElementById('specs-modal');
+  const closeSpecsModal = document.getElementById('close-specs-modal');
+  const triggerSpecsBtns = document.querySelectorAll('.trigger-specs-modal');
+  const specsToQuoteBtn = document.getElementById('specs-to-quote-btn');
+
+  triggerSpecsBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      specsModal?.classList.add('open');
+    });
+  });
+
+  closeSpecsModal?.addEventListener('click', () => {
+    specsModal?.classList.remove('open');
+  });
+
+  // 点击参数表底部的“索取报价”按钮时，关闭参数表并打开报价表单
+  specsToQuoteBtn?.addEventListener('click', () => {
+    specsModal?.classList.remove('open');
+    quoteModal?.classList.add('open');
+  });
+
+  specsModal?.addEventListener('click', (e) => {
+    if (e.target === specsModal) specsModal.classList.remove('open');
+  });
+
 
   // ====================================================
-  // 8. 页面滚动更新侧边栏/顶部导航高亮
+  // 9. 页面滚动更新侧边栏/顶部导航高亮
   // ====================================================
   const sections = document.querySelectorAll('section');
   const dotItems = document.querySelectorAll('.dot-item');

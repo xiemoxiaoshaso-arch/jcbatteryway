@@ -1,6 +1,6 @@
 // src/data/siteData.ts
 
-// 1. 默认英文配置 (Default English - 已精准同步最新中文与表单修正)
+// 1. 默认英文配置 (Default English - 已精准同步最新中文修正)
 export const siteDataEn = {
   siteName: "JC NEW ENERGY",
   siteSubTitle: "JC BATTERY WAY",
@@ -30,6 +30,7 @@ export const siteDataEn = {
       { num: "30+", label: "Countries Served" },
     ],
     showcaseTitle: "🏢 Modern Manufacturing Base & Equipment Strength",
+    // 👈 新增 4 项硬件实力卡片列表 (英文)
     showcaseList: [
       { tag: "R&D Base", title: "Modern R&D Park" },
       { tag: "Cleanroom", title: "Automated Workshop" },
@@ -64,7 +65,7 @@ export const siteDataEn = {
         text: "Fully compliant with CE, REACH, RoHS standards for long-term safe operation."
       }
     ],
-    ctaBtnText: "View Technical Specifications & Datasheet ➔",
+    ctaBtnText: "Get Specification & Quote for SUPER ISLAND 90kWh ➔",
   },
   advantages: {
     badge: "CORE ADVANTAGES",
@@ -98,7 +99,7 @@ export const siteDataEn = {
     ]
   },
 
-  // Quote Form Modal (English)
+  // 7. Quote Form Modal (English)
   quoteModal: {
     title: "Inquire for Customized Quote",
     subTitle: "Please fill in your battery specifications and requirements for our engineers to calculate costs.",
@@ -117,34 +118,12 @@ export const siteDataEn = {
       email: "example@company.com",
       company: "e.g. JC Storage Ltd.",
       country: "e.g. Germany, USA",
-      voltage: "e.g. 48V / 350V/540V",
-      capacity: "e.g. 300Ah / 166Ah",
+      voltage: "e.g. 51.2V / 384V",
+      capacity: "e.g. 100Ah / 280Ah",
       quantity: "e.g. 500 packs",
-      requirements: "e.g. We need batteries for electric boat projects. Please specify if the operating environment is inland freshwater or marine, communication protocols needed, or provide detailed technical specifications for custom development.",
+      requirements: "Describe your application scenario...",
     },
     btnText: "Submit Inquiry ➔"
-  },
-
-  // 参数规格表弹窗字典 (英文)
-  specsModal: {
-    title: "SUPER ISLAND Series Technical Specifications",
-    subTitle: "Engineering parameters for 60kWh & 90kWh marine power battery packs",
-    headers: ["Specification Item", "60kWh Pack", "90kWh Pack", "Remarks"],
-    rows: [
-      { item: "Battery Chemistry", v60: "NCM / Graphite", v90: "NCM / Graphite", remark: "-" },
-      { item: "Nominal Voltage (V)", v60: "359.04 V", v90: "538.56 V", remark: "1/3C" },
-      { item: "Nominal Capacity (Ah)", v60: "166 Ah", v90: "166 Ah", remark: "1/3C" },
-      { item: "Nominal Energy (kWh)", v60: "59.6 kWh", v90: "89.4 kWh", remark: "1/3C" },
-      { item: "Weight (kg)", v60: "355 ± 5 kg", v90: "540 ± 5 kg", remark: "-" },
-      { item: "Energy Density (Wh/kg)", v60: "168 Wh/kg", v90: "166 Wh/kg", remark: "1/3C" },
-      { item: "Dimensions L×W×H (mm)", v60: "1154×710×300 ±3", v90: "1665×710×300 ±3", remark: "-" },
-      { item: "Protection Level", v60: "IP67", v90: "IP67", remark: "-" },
-      { item: "Enclosure Material", v60: "316L Stainless Steel", v90: "316L Stainless Steel", remark: "-" },
-      { item: "Surface Finish", v60: "Electrophoresis + Powder Coating", v90: "Electrophoresis + Powder Coating", remark: "-" },
-      { item: "External Bolt Material", v60: "316L Stainless Steel", v90: "316L Stainless Steel", remark: "-" },
-      { item: "Parallel Expansion", v60: "Multi-pack Parallel Supported", v90: "Multi-pack Parallel Supported", remark: "-" }
-    ],
-    inquireBtnText: "Request Customized Quote ➔"
   },
 
   contact: {
@@ -161,9 +140,9 @@ export const siteDataEn = {
   footer: {
     brandDesc: "Committed to high-safety, green, and efficient battery technology serving global zero-carbon energy transition.",
     productsTitle: "Products",
-    productsLinks: ["Power Battery System Series"],
+    productsLinks: ["ESS Series", "Marine Power", "Industrial Battery"],
     qualitiesTitle: "Quality & Certifications",
-    qualitiesList: ["ISO 9001", "IEC62619 / UN38.3"],
+    qualitiesList: ["ISO 9001 / 14001", "UL1973 / IEC62619 / UN38.3"],
     headquartersTitle: "Headquarters",
     address: "Building 8, SPIC State Nuclear New Energy Industrial Park, Yongkang, Zhejiang, China",
     tel: "Tel: +86 18018962196",
@@ -205,6 +184,7 @@ export const siteDataZh = {
       { num: "30+", label: "覆盖国家与地区" },
     ],
     showcaseTitle: "🏢 现代化生产基地与装备实力",
+    // 👈 新增 4 项硬件实力卡片列表 (中文)
     showcaseList: [
       { tag: "研发基地", title: "现代化智造园区" },
       { tag: "无尘车间", title: "全自动化生产车间" },
@@ -240,7 +220,7 @@ export const siteDataZh = {
         text: "全面符合 CE、REACH、RoHS 等国际环保与高压安全标准，保障系统长久稳定运行。"
       }
     ],
-    ctaBtnText: "查看产品详细参数规格表 ➔",
+    ctaBtnText: "获取 SUPER ISLAND 90kWh 详细规格书与报价 ➔",
   },
 
   advantages: {
@@ -275,7 +255,7 @@ export const siteDataZh = {
     ]
   },
 
-  // Quote Form Modal (中文)
+  // 7. Quote Form Modal (中文)
   quoteModal: {
     title: "在线递交定制留言与报价申请",
     subTitle: "请详细填写您的电池技术指标和需求，以便我们的工程师为您核算精确的成本数据。",
@@ -294,34 +274,12 @@ export const siteDataZh = {
       email: "example@company.com",
       company: "例如：JC Storage Ltd.",
       country: "例如：德国、北美",
-      voltage: "如：48V / 350V/540V",
-      capacity: "如：300Ah / 166Ah",
+      voltage: "如：51.2V / 384V",
+      capacity: "如：100Ah / 280Ah",
       quantity: "如：500 组",
-      requirements: "例如：我们需要将电池用于电动船舶项目，使用场景是内陆淡水还是海洋环境，是否需要通讯，通讯协议，或者提供详细技术要求，进行定制开发",
+      requirements: "例如：我们需要将电池用于工商业液冷储能项目，逆变器品牌是固德威，要求带 CAN 协议通讯...",
     },
     btnText: "提交定制申请 ➔"
-  },
-
-  // 参数规格表弹窗字典 (中文)
-  specsModal: {
-    title: "SUPER ISLAND 系列详细技术参数表",
-    subTitle: "60kWh 与 90kWh 船用动力电池包官方工程技术指标对比",
-    headers: ["项目", "60kWh 电池包", "90kWh 电池包", "备注"],
-    rows: [
-      { item: "体系", v60: "NCM / 石墨", v90: "NCM / 石墨", remark: "-" },
-      { item: "额定电压 (V)", v60: "359.04 V", v90: "538.56 V", remark: "1/3C" },
-      { item: "额定容量 (Ah)", v60: "166 Ah", v90: "166 Ah", remark: "1/3C" },
-      { item: "额定能量 (kWh)", v60: "59.6 kWh", v90: "89.4 kWh", remark: "1/3C" },
-      { item: "重量 (kg)", v60: "355 ± 5 kg", v90: "540 ± 5 kg", remark: "-" },
-      { item: "能量密度 (Wh/kg)", v60: "168 Wh/kg", v90: "166 Wh/kg", remark: "1/3C" },
-      { item: "包络尺寸 (mm)", v60: "1154×710×300 ±3", v90: "1665×710×300 ±3", remark: "-" },
-      { item: "防护等级", v60: "IP67", v90: "IP67", remark: "-" },
-      { item: "外壳材质", v60: "316L 不锈钢", v90: "316L 不锈钢", remark: "-" },
-      { item: "箱体处理工艺", v60: "电泳 + 喷塑", v90: "电泳 + 喷塑", remark: "-" },
-      { item: "外部螺栓材质", v60: "316L 不锈钢", v90: "316L 不锈钢", remark: "-" },
-      { item: "拓展功能", v60: "支持多包并联", v90: "支持多包并联", remark: "-" }
-    ],
-    inquireBtnText: "索取大货定制报价 ➔"
   },
 
   contact: {
@@ -339,9 +297,9 @@ export const siteDataZh = {
   footer: {
     brandDesc: "致力于以高安全、绿色、高效率的电池技术，服务于全球绿色零碳经济和能源转型战略。",
     productsTitle: "产品中心",
-    productsLinks: ["动力电池系统系列"],
+    productsLinks: ["储能系列", "动力系列", "工业电池组"],
     qualitiesTitle: "质量与认证",
-    qualitiesList: ["ISO 9001", "IEC62619 / UN38.3"],
+    qualitiesList: ["ISO 9001 / 14001", "UL1973 / IEC62619 / UN38.3"],
     headquartersTitle: "企业总部",
     address: "中国·浙江省永康市中电国核新能源产业园8栋",
     tel: "Tel: +86 18018962196",

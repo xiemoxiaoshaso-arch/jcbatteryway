@@ -1702,3 +1702,147 @@ body.lang-en .lang-zh {
 body.lang-zh .lang-en {
   display: none !important;
 }
+
+/* ----------------------------------------------------
+   详细技术参数规格表弹窗样式 (Specs Modal)
+---------------------------------------------------- */
+.specs-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2400;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.specs-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.specs-card {
+  background-color: #ffffff;
+  max-width: 880px;
+  width: 92%;
+  max-height: 88vh;
+  overflow-y: auto;
+  border-radius: 20px;
+  padding: 2.2rem;
+  box-sizing: border-box;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);
+  animation: modalUp 0.3s ease-out forwards;
+}
+
+.specs-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: none;
+  color: #64748b;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.specs-close-btn:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+.specs-header h2 {
+  text-align: left;
+  font-size: 1.5rem;
+  color: #0f172a;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+}
+
+.specs-header p {
+  color: #64748b;
+  font-size: 0.88rem;
+  margin-bottom: 1.5rem;
+}
+
+/* 参数表格样式 */
+.table-responsive {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 1.5rem;
+}
+
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.specs-table th {
+  background-color: #f1f5f9;
+  color: #0f172a;
+  font-weight: 700;
+  padding: 0.9rem 1.1rem;
+  border-bottom: 2px solid #cbd5e1;
+}
+
+.specs-table td {
+  padding: 0.8rem 1.1rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+}
+
+.specs-table tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.specs-table tr:hover {
+  background-color: #f0fdf4;
+}
+
+.specs-table td.spec-item-title {
+  font-weight: 700;
+  color: #0f172a;
+  background-color: rgba(241, 245, 249, 0.5);
+  width: 28%;
+}
+
+.specs-table td.highlight-val {
+  font-weight: 700;
+  color: #00b862;
+}
+
+.specs-table td.remark-val {
+  color: #94a3b8;
+}
+
+.specs-footer-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.specs-footer-actions .btn {
+  padding: 0.85rem 1.8rem;
+  font-size: 0.92rem;
+}
+
+@media (max-width: 640px) {
+  .specs-card { padding: 1.5rem 1rem; }
+  .specs-table th, .specs-table td { padding: 0.6rem 0.7rem; font-size: 0.8rem; }
+}
