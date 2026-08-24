@@ -75,6 +75,12 @@ export const siteDataEn = {
       { tag: "Equipment", title: "Precision Testing Setup" },
       { tag: "Warehouse", title: "Smart Logistics Center" }
     ],
+    // 👈 放在 about 内部最下方
+    factoryVideo: {
+      tag: "Factory Tour Video",
+      playBtnText: "Watch Factory Tour",
+      expandBtnText: "Full Screen Pop-up",
+    },
   },
   // 3. Products Section (Multi-Product List)
   products: {
@@ -325,6 +331,12 @@ export const siteDataZh = {
       { tag: "精密装备", title: "高精度检测加工设备" },
       { tag: "智能库房", title: "恒温成品与仓储中心" }
     ],
+    // 👈 放在 about 内部最下方
+    factoryVideo: {
+      tag: "企业工厂实拍宣传片",
+      playBtnText: "播放工厂实拍宣传片",
+      expandBtnText: "放大全屏播放",
+    },
   },
 
   // 3. 船舶锂电/旗舰产品板块 (中文)

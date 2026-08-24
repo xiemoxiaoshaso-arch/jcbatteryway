@@ -231,39 +231,46 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
             </div>
             <!-- 工厂实景宣传视频展示区 (带高质感封面与 ▶ 播放按钮) -->
             <!-- 工厂实景宣传视频展示区 (带放大全屏播放按钮) -->
-            <div class="factory-video-section">
-              <div class="video-player-box" id="video-wrapper">
-                <video 
-                  id="factory-promo-video" 
-                  controls 
-                  preload="metadata" 
-                  poster="/video-poster.jpg"
-                >
-                  <source src="/factory-video.mp4" type="video/mp4" />
-                </video>
+            <!-- 工厂实景宣传视频展示区 (文案提取至 siteData.ts 并支持双语) -->
+          <div class="factory-video-section">
+            <div class="video-player-box" id="video-wrapper">
+              <video 
+                id="factory-promo-video" 
+                controls 
+                preload="metadata" 
+                poster="/video-poster.jpg"
+              >
+                <source src="/factory-video.mp4" type="video/mp4" />
+              </video>
 
-                <!-- 封面居中 ▶ 播放按钮 -->
-                <div class="video-play-trigger" id="custom-video-play-btn">
-                  <div class="play-btn-circle">
-                    <span class="play-icon">▶</span>
-                  </div>
-                  <span class="play-btn-text">
-                    <span class="lang-en">Watch Factory Tour</span>
-                    <span class="lang-zh">播放工厂实拍宣传片</span>
-                  </span>
+              <!-- 封面居中 ▶ 播放按钮 -->
+              <div class="video-play-trigger" id="custom-video-play-btn">
+                <div class="play-btn-circle">
+                  <span class="play-icon">▶</span>
                 </div>
-
-                <!-- 左上角标签 -->
-                <div class="video-overlay-tag">
-                  <span>🎬 <span class="lang-en">Factory Tour Video</span><span class="lang-zh">企业工厂实拍宣传片</span></span>
-                </div>
-
-                <!-- 右下角：放大全屏播放按钮 -->
-                <button class="video-expand-btn trigger-video-modal">
-                  <span>⛶ <span class="lang-en">Full Screen Pop-up</span><span class="lang-zh">放大全屏播放</span></span>
-                </button>
+                <span class="play-btn-text">
+                  <span class="lang-en">{siteDataEn.about.factoryVideo.playBtnText}</span>
+                  <span class="lang-zh">{siteDataZh.about.factoryVideo.playBtnText}</span>
+                </span>
               </div>
+
+              <!-- 左上角标签 -->
+              <div class="video-overlay-tag">
+                <span>🎬 
+                  <span class="lang-en">{siteDataEn.about.factoryVideo.tag}</span>
+                  <span class="lang-zh">{siteDataZh.about.factoryVideo.tag}</span>
+                </span>
+              </div>
+
+              <!-- 右上角：放大全屏播放按钮 -->
+              <button class="video-expand-btn trigger-video-modal">
+                <span>⛶ 
+                  <span class="lang-en">{siteDataEn.about.factoryVideo.expandBtnText}</span>
+                  <span class="lang-zh">{siteDataZh.about.factoryVideo.expandBtnText}</span>
+                </span>
+              </button>
             </div>
+          </div>
 
             <!-- ... (其他内容) ... -->
 
