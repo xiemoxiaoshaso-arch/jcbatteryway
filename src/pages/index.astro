@@ -693,30 +693,31 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
       </div>
     </div>
 
-    <!-- 9. 详细参数规格表弹窗 -->
+
+    <!-- 9. 详细参数规格表弹窗 (顶栏平行规整排版) -->
     <div id="specs-modal" class="specs-modal">
       <div class="specs-card">
-        <button id="close-specs-modal" class="specs-close-btn">✕</button>
         
+        <!-- 弹窗顶栏：左侧标题，右侧按钮组 -->
         <div class="specs-header">
-          <!-- 标题与右侧按钮容器 -->
-          <div class="specs-header-top">
-            <div class="specs-title-box">
-              <h2>
-                <span class="lang-en">{siteDataEn.specsModal.title}</span>
-                <span class="lang-zh">{siteDataZh.specsModal.title}</span>
-              </h2>
-              <p>
-                <span class="lang-en">{siteDataEn.specsModal.subTitle}</span>
-                <span class="lang-zh">{siteDataZh.specsModal.subTitle}</span>
-              </p>
-            </div>
+          <div class="specs-title-box">
+            <h2>
+              <span class="lang-en">{siteDataEn.specsModal.title}</span>
+              <span class="lang-zh">{siteDataZh.specsModal.title}</span>
+            </h2>
+            <p>
+              <span class="lang-en">{siteDataEn.specsModal.subTitle}</span>
+              <span class="lang-zh">{siteDataZh.specsModal.subTitle}</span>
+            </p>
+          </div>
 
-            <!-- 将报价按钮移至标题右侧 -->
+          <!-- 右侧操作组：报价按钮与关闭按钮同一中线平行对齐 -->
+          <div class="specs-header-actions">
             <button class="btn btn-green trigger-quote-modal" id="specs-to-quote-btn">
               <span class="lang-en">{siteDataEn.specsModal.inquireBtnText}</span>
               <span class="lang-zh">{siteDataZh.specsModal.inquireBtnText}</span>
             </button>
+            <button id="close-specs-modal" class="specs-close-btn">✕</button>
           </div>
         </div>
 
@@ -751,9 +752,10 @@ const pageTitle = `${siteDataEn.siteName} | Professional Industrial & ESS Lithiu
             </tbody>
           </table>
         </div>
+
       </div>
     </div>
-
+    
     <script src="../scripts/main.js"></script>
   </body>
 </html>

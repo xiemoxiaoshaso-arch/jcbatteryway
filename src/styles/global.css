@@ -1848,47 +1848,87 @@ body.lang-zh .lang-en {
 }
 
 /* 参数规格表头部与按钮右置排版 */
-.specs-header-top {
+/* ----------------------------------------------------
+   详细技术参数规格表弹窗 - 顶栏规整平行对齐
+---------------------------------------------------- */
+.specs-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center;               /* 关键：顶部所有元素垂直中线对齐 */
   gap: 1.5rem;
-  margin-bottom: 1.5rem;
-  padding-right: 45px; /* 避开右上角的 ✕ 关闭按钮 */
+  margin-bottom: 1.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e2e8f0;  /* 增加一条精致的分隔线 */
 }
 
 .specs-title-box h2 {
   text-align: left;
-  font-size: 1.5rem;
+  font-size: 1.45rem;
   color: #0f172a;
   font-weight: 800;
-  margin: 0 0 0.3rem 0;
+  margin: 0 0 0.2rem 0;
 }
 
 .specs-title-box p {
   color: #64748b;
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   margin: 0;
 }
 
-/* 标题右侧的报价按钮 */
+/* 右侧按钮组容器 */
+.specs-header-actions {
+  display: flex;
+  align-items: center;               /* 报价按钮与 ✕ 关闭按钮同排垂直居中 */
+  gap: 0.8rem;
+  flex-shrink: 0;
+}
+
 #specs-to-quote-btn {
-  padding: 0.6rem 1.2rem;
-  font-size: 0.88rem;
+  padding: 0 1.1rem;
+  height: 38px;                       /* 统一高度为 38px */
+  font-size: 0.85rem;
   white-space: nowrap;
-  flex-shrink: 0;      /* 防止按钮被挤压 */
-  border-radius: 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 取消绝对定位，与报价按钮同排齐平 */
+.specs-close-btn {
+  position: static;                  /* 关键：取消绝对定位 */
+  width: 38px;
+  height: 38px;                      /* 统一高度为 38px */
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.specs-close-btn:hover {
+  background-color: #ef4444;
+  border-color: #ef4444;
+  color: #ffffff;
 }
 
 /* 移动端自适应 */
 @media (max-width: 768px) {
-  .specs-header-top {
+  .specs-header {
     flex-direction: column;
     align-items: flex-start;
-    padding-right: 0;
+  }
+  .specs-header-actions {
+    width: 100%;
+    justify-content: space-between;
   }
   #specs-to-quote-btn {
-    width: 100%;
-    margin-top: 0.5rem;
+    flex: 1;
   }
 }
