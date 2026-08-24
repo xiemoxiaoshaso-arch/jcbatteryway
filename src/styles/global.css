@@ -2187,7 +2187,7 @@ body.lang-zh .lang-en {
 /* 右下角放大播放按钮 */
 .video-expand-btn {
   position: absolute;
-  bottom: 16px;
+  top: 16px;
   right: 16px;
   background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(8px);
