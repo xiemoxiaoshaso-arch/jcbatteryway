@@ -2094,7 +2094,7 @@ body.lang-zh .lang-en {
 }
 
 /* ----------------------------------------------------
-   工厂实拍宣传视频播放器样式
+   工厂实拍宣传视频播放器（精准锁定 1280*760 原始比例）
 ---------------------------------------------------- */
 .factory-video-section {
   margin-top: 2.5rem;
@@ -2105,19 +2105,18 @@ body.lang-zh .lang-en {
 .video-player-box {
   position: relative;
   width: 100%;
-  max-width: 100%;
-  height: 480px;                       /* 视频框高度 */
+  aspect-ratio: 1280 / 760;            /* 关键：精确锁定 1280*760 原始比例，高度自动按比例缩放 */
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.15);
   border: 2px solid #ffffff;
-  background-color: #0f172a;           /* 视频加载前的深色底 */
+  background-color: #0f172a;
 }
 
 .video-player-box video {
   width: 100%;
   height: 100%;
-  object-fit: cover;                   /* 视频铺满容器 */
+  object-fit: contain;                 /* 保持视频完整不裁切 */
   display: block;
   outline: none;
 }
@@ -2135,13 +2134,6 @@ body.lang-zh .lang-en {
   font-size: 0.82rem;
   font-weight: 700;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  pointer-events: none;                /* 不挡住视频播放控制条 */
+  pointer-events: none;                /* 不挡住视频控制条 */
   z-index: 10;
-}
-
-/* 移动端高度自适应 */
-@media (max-width: 768px) {
-  .video-player-box {
-    height: 240px;
-  }
 }
