@@ -261,7 +261,7 @@ export const siteDataZh = {
   hero: [
     {
       order: 1,
-      badge: "chuan锂电池方案专家",
+      badge: "船锂电池方案专家",
       badgeColor: "emerald",
       title: "驱动绿色未来",
       subtitle: "以安全与品质定义新能源",
