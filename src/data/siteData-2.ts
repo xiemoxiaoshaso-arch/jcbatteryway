@@ -22,7 +22,7 @@ export const siteDataEn = {
       badgeColor: "emerald",
       title: "Driving a Green Future",
       subtitle: "Defining Clean Energy with Safety & Quality",
-      description: "We specialize in the integration of high-safety, high-energy density NCM systems, providing one-stop customized power battery system solutions for global customers.",
+      description: "We specialize in R&D of high-safety, long-life LiFePO4 (LFP) cells and energy storage system integration, planning 15 GWh annual capacity to provide one-stop customized power & ESS battery pack solutions for global clients.",
       ctaText1: "Explore Products ➔",
       ctaLink1: "#products",
       ctaText2: "Request Custom Solution",
@@ -30,11 +30,23 @@ export const siteDataEn = {
     },
     {
       order: 2,
-      badge: "Smart Workshop ",
+      badge: "C&I & Residential Energy Storage Integration",
+      badgeColor: "blue",
+      title: "Smart Energy Storage Systems",
+      subtitle: "24/7 Guarding Your Zero-Carbon Power",
+      description: "Providing high-efficiency containerized liquid-cooled ESS, C&I distributed storage cabinets, and residential stacked high-voltage battery packs, seamlessly compatible with mainstream inverters for peak-shaving and backup power.",
+      ctaText1: "Explore ESS Products ➔",
+      ctaLink1: "#products",
+      ctaText2: "Request Custom Solution",
+      ctaLink2: "#contact",
+    },
+    {
+      order: 3,
+      badge: "Smart Workshop & IATF 16949 Quality System",
       badgeColor: "cyan",
       title: "Marine-Grade Smart Manufacturing",
       subtitle: "Precision Craftsmanship for Ultimate Safety",
-      description: "The introduction of automated laser welding equipment, module online voltage detection system, airtightness tester, and charge-discharge test cabinet ensures product consistency and enhances product quality.",
+      description: "Fully automated MES traceability system and Class 10,000 cleanroom standards. Every outgoing cell undergoes 100% ultrasonic NDT testing, charge-discharge, and X-ray inspection to eliminate all safety risks.",
       ctaText1: "Explore Products ➔",
       ctaLink1: "#products",
       ctaText2: "Request Custom Solution",
@@ -47,12 +59,13 @@ export const siteDataEn = {
     subTitle: "15 years of R&D in lithium battery & ESS for a sustainable green future",
     mainTitle: "Smart Manufacturing · Empowering Clean Energy",
     paragraphs: [
-      "Yongkang JC New Energy Co., Ltd. is a high-tech enterprise integrating R&D, production, and sales of lithium-ion batteries. The company boasts a modern standard factory building spanning tens of thousands of square meters, equipped with industry-leading system assembly and testing equipment.",
-      "We specialize in high-safety, high-energy density NMC and LFP battery cell applications. Our products have obtained multiple internationally authoritative certifications such as ISO9001, CE, and UN38.3, and are widely used in high-end markets such as global electric ships, medical devices, and civilian power batteries."
+      "Yongkang JC New Energy Co., Ltd. is a high-tech enterprise integrating R&D, production, and sales of lithium-ion batteries. The company has tens of thousands of square meters of modern standard plants and smart dust-free workshops, equipped with industry-leading fully automated battery packaging and testing equipment.",
+      "We focus on high-safety, high-energy-density NMC and LFP cell applications, certified by ISO9001, CE, UN38.3, and widely serving global high-end markets such as electric marine vessels, medical devices, and commercial ESS."
     ],
     stats: [
       { num: "15+", label: "Years Experience" },
       { num: "20+", label: "R&D Patents" },
+      { num: "15GWh", label: "Annual Capacity" },
       { num: "30+", label: "Countries Served" },
     ],
     showcaseTitle: "🏢 Modern Manufacturing Base & Equipment Strength",
@@ -60,7 +73,7 @@ export const siteDataEn = {
       { tag: "R&D Base", title: "Modern R&D Park" },
       { tag: "Cleanroom", title: "Automated Workshop" },
       { tag: "Equipment", title: "Precision Testing Setup" },
-      { tag: "Warehouse", title: "Smart Logistics" }
+      { tag: "Warehouse", title: "Smart Logistics Center" }
     ],
     // 👈 放在 about 内部最下方
     factoryVideo: {
@@ -261,11 +274,11 @@ export const siteDataZh = {
   hero: [
     {
       order: 1,
-      badge: "chuan锂电池方案专家",
+      badge: "工业级 & 储能级锂电池方案专家",
       badgeColor: "emerald",
       title: "驱动绿色未来",
       subtitle: "以安全与品质定义新能源",
-      description: "我们专注于高安全、高能量密度NCM系统集成，为全球客户提供一站式定制化动力电池系统解决方案。",
+      description: "我们专注于高安全、长寿命磷酸铁锂（LFP）电芯研发与储能系统集成，年产能规划 15 GWh，为全球客户提供一站式定制化动力与储能包方案。",
       ctaText1: "浏览产品中心 ➔",
       ctaLink1: "#products",
       ctaText2: "索取定制方案",
@@ -273,12 +286,24 @@ export const siteDataZh = {
     },
     {
       order: 2,
-      badge: "智造车间",
+      badge: "工商业 & 户用储能系统集成",
+      badgeColor: "blue",
+      title: "智慧储能系统",
+      subtitle: "全天候守护您的零碳电力",
+      description: "提供涵盖高效率集装箱液冷储能、工商业分布式储能柜、以及家庭堆叠式高压电池包，无缝兼容主流逆变器，实现峰谷套利与安全备电。",
+      ctaText1: "探索储能产品 ➔",
+      ctaLink1: "#products",
+      ctaText2: "索取定制方案",
+      ctaLink2: "#contact",
+    },
+    {
+      order: 3,
+      badge: "智造车间 & IATF 16949 体系",
       badgeColor: "cyan",
       title: "船舶级智能制造",
       subtitle: "以精密工艺成就极致安全",
-      description: "引入自动化激光焊接设备、模组在线电压检测系统、气密检测仪、充放电测试柜，保证产品一致性，提升产品质量。",
-      ctaText1: "浏览产品中心 ➔",
+      description: "全线引进全自动化 MES 追溯系统与万级无尘控制标准，出厂电芯历经 100% 超声波无损探伤、充放电及 X-ray 质检，杜绝安全隐患。",
+      ctaText1: "探索储能产品 ➔",
       ctaLink1: "#products",
       ctaText2: "索取定制方案",
       ctaLink2: "#contact",
@@ -287,23 +312,24 @@ export const siteDataZh = {
   about: {
     badge: "ABOUT JC NEW ENERGY",
     title: "关于嘉程新能源",
-    subTitle: "专注乘用车动力电池系统与民用动力电池系统研发 15 年，打造可持续发展的绿色未来",
+    subTitle: "专注锂电池与储能系统研发 15 年，打造可持续发展的绿色未来",
     mainTitle: "智造驱动 · 科技赋能新能源",
     paragraphs: [
-      "嘉程新能源是一家集锂离子电池研发、生产和销售于一体的高新技术企业。公司拥有上万平方米现代化标准厂房，配置了行业领先的系统组装以及测试设备。",
-      "我们专注于高安全、高能量密度NMC及LFP电芯应用，产品通过 ISO9001、CE、UN38.3 等多项国际权威认证，广泛服务于全球电动船舶、医疗器械、民用动力电池等高端市场。"
+      "嘉程新能源是一家集锂离子电池研发、生产和销售于一体的高新技术企业。公司拥有数万平方米现代化标准厂房与智能化无尘车间，配置了行业领先的全自动化电池封装及测试设备。",
+      "我们专注于高安全、高能量密度NMC及LFP电芯应用，产品通过 ISO9001、CE、UN38.3 等多项国际权威认证，广泛服务于全球电动船舶、医疗器械、工商业储能等高端市场。"
     ],
     stats: [
       { num: "15+", label: "行业沉淀经验" },
       { num: "20+", label: "研发专利授权" },
+      { num: "15GWh", label: "年产出能力" },
       { num: "30+", label: "覆盖国家与地区" },
     ],
     showcaseTitle: "🏢 现代化生产基地与装备实力",
     showcaseList: [
       { tag: "研发基地", title: "现代化智造园区" },
-      { tag: "无尘车间", title: "自动化生产车间" },
+      { tag: "无尘车间", title: "全自动化生产车间" },
       { tag: "精密装备", title: "高精度检测加工设备" },
-      { tag: "智能库房", title: "恒温成品仓储" }
+      { tag: "智能库房", title: "恒温成品与仓储中心" }
     ],
     // 👈 放在 about 内部最下方
     factoryVideo: {
